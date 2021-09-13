@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/09/13 13:17:31 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/09/13 15:12:00 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
+
+void	check_args_are_valid(int argc, char **argv);
 
 #endif
 
