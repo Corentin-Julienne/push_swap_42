@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:26:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/09/13 19:02:12 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/09/14 11:43:50 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ static void	is_int_compatible(const char *str)
 	check_int_limits(ptn, sign);
 }
 
-void	check_args_are_valid(int argc, char **argv)
+int	*check_args_are_valid(int argc, char **argv)
 {
 	int		j;
 	int		*nums;
@@ -114,10 +114,7 @@ void	check_args_are_valid(int argc, char **argv)
 
 	j = 1;
 	while (j < argc)
-	{
-		is_int_compatible(argv[j]);
-		j++;
-	}
+		is_int_compatible(argv[j++]);
 	j = 0;
 	nums = (int *)malloc(sizeof(int) * (argc - 1));
 	if (!nums)
@@ -133,4 +130,5 @@ void	check_args_are_valid(int argc, char **argv)
 		free(nums);
 		error_and_exit();
 	}
+	return (nums);
 }

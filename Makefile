@@ -6,7 +6,7 @@
 #    By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/06 16:06:37 by cjulienn          #+#    #+#              #
-#    Updated: 2021/09/13 18:01:04 by cjulienn         ###   ########.fr        #
+#    Updated: 2021/09/14 13:32:04 by cjulienn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,11 @@ NAME= push_swap
 
 SRCS= ./srcs/push_swap.c \
 	  ./srcs/check_args_validity.c \
-	  ./srcs/manage_piles.c
+	  ./srcs/manage_piles.c \
+	  ./srcs/stack_utils_1.c \
+	  ./srcs/stack_utils_2.c \
+	  ./srcs/actions_1.c \
+	  ./srcs/actions_2.c
 
 OBJS = $(SRCS:.c=.o)
 
