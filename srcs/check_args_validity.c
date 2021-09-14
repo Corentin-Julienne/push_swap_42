@@ -6,11 +6,31 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:26:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/09/13 15:13:34 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/09/13 19:02:12 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static void	check_if_already_sorted(int *nums, int nbr_c)
+{
+	int		not_sorted;
+	int		i;
+
+	not_sorted = 0;
+	i = 0;
+	while (i < nbr_c - 1)
+	{
+		if (nums[i] > nums[i + 1])
+			not_sorted++;
+		i++;
+	}
+	if (not_sorted == 0)
+	{
+		free(nums);
+		error_and_exit();
+	}
+}
 
 static int	check_if_duplicates(int	*nums, int nbr_c)
 {
@@ -32,6 +52,7 @@ static int	check_if_duplicates(int	*nums, int nbr_c)
 		j++;
 		i = 0;
 	}
+	check_if_already_sorted(nums, nbr_c);
 	return (errors);
 }
 
@@ -40,7 +61,7 @@ static void	check_int_limits(const char *ptn, int sign)
 	char				*str;
 	unsigned long long	res;
 
-	if (!str)
+	if (!ptn)
 		error_and_exit();
 	str = (char *)ptn;
 	res = 0;
@@ -66,7 +87,7 @@ static void	is_int_compatible(const char *str)
 	int		i;
 	int		sign;
 
-	if (!ptn)
+	if (!str)
 		error_and_exit();
 	i = 0;
 	sign = 1;
@@ -76,10 +97,11 @@ static void	is_int_compatible(const char *str)
 		sign = -1;
 		ptn++;
 	}
-	while (ptn[i++])
+	while (ptn[i])
 	{
 		if (ptn[i] < 48 || ptn[i] > 58)
-			error_and_exit();	
+			error_and_exit();
+		i++;
 	}
 	check_int_limits(ptn, sign);
 }
@@ -90,15 +112,21 @@ void	check_args_are_valid(int argc, char **argv)
 	int		*nums;
 	int		errors;
 
-	j = 0;
-	while (argv[j++])
+	j = 1;
+	while (j < argc)
+	{
 		is_int_compatible(argv[j]);
+		j++;
+	}
 	j = 0;
 	nums = (int *)malloc(sizeof(int) * (argc - 1));
 	if (!nums)
 		error_and_exit();
-	while (j++ < (argc - 1))
-		nums[j] = ft_atoi(argv[j]);
+	while (j < (argc - 1))
+	{
+		nums[j] = ft_atoi(argv[j + 1]);
+		j++;
+	}	
 	errors = check_if_duplicates(nums, (argc - 1));
 	if (errors != 0)
 	{

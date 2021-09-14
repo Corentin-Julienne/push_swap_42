@@ -6,14 +6,15 @@
 #    By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/06 16:06:37 by cjulienn          #+#    #+#              #
-#    Updated: 2021/09/13 15:10:33 by cjulienn         ###   ########.fr        #
+#    Updated: 2021/09/13 18:01:04 by cjulienn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= push_swap
 
 SRCS= ./srcs/push_swap.c \
-	  ./srcs/check_args_validity.c
+	  ./srcs/check_args_validity.c \
+	  ./srcs/manage_piles.c
 
 OBJS = $(SRCS:.c=.o)
 
