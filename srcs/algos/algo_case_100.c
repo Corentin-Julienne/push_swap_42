@@ -1,14 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   algo_case_100.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/06 16:05:52 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/08/06 16:07:11 by cjulienn         ###   ########.fr       */
+/*   Created: 2022/01/23 15:41:53 by cjulienn          #+#    #+#             */
+/*   Updated: 2022/01/23 16:18:58 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
+int	algo_case_100_nums(int *nums, t_stack *pile_a)
+{
+	return	(0);
+}

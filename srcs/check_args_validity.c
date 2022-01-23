@@ -6,13 +6,13 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:26:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/09/14 11:43:50 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/23 15:06:37 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	check_if_already_sorted(int *nums, int nbr_c)
+static int	check_if_already_sorted(int *nums, int nbr_c)
 {
 	int		not_sorted;
 	int		i;
@@ -26,10 +26,8 @@ static void	check_if_already_sorted(int *nums, int nbr_c)
 		i++;
 	}
 	if (not_sorted == 0)
-	{
-		free(nums);
-		error_and_exit();
-	}
+		return (1);
+	return (0);
 }
 
 static int	check_if_duplicates(int	*nums, int nbr_c)
@@ -52,21 +50,19 @@ static int	check_if_duplicates(int	*nums, int nbr_c)
 		j++;
 		i = 0;
 	}
-	check_if_already_sorted(nums, nbr_c);
+	errors += check_if_already_sorted(nums, nbr_c);
 	return (errors);
 }
 
-static void	check_int_limits(const char *ptn, int sign)
+static int	check_int_limits(const char *ptn, int sign)
 {
 	char				*str;
 	unsigned long long	res;
 
-	if (!ptn)
-		error_and_exit();
 	str = (char *)ptn;
 	res = 0;
 	if (ft_strlen(str) > 19)
-		error_and_exit();
+		return (1);
 	while (str[0])
 	{
 		if (str[0] >= '0' && str[0] <= '9')
@@ -76,19 +72,18 @@ static void	check_int_limits(const char *ptn, int sign)
 		str++;
 	}
 	if (res >= 9223372036854775808ULL && sign == 1)
-		error_and_exit();
+		return (1);
 	if (res >= 9223372036854775808ULL && sign == (-1))
-		error_and_exit();
+		return (1);
+	return (0);
 }
 
-static void	is_int_compatible(const char *str)
+static int	is_int_compatible(const char *str)
 {
 	char	*ptn;
 	int		i;
 	int		sign;
 
-	if (!str)
-		error_and_exit();
 	i = 0;
 	sign = 1;
 	ptn = (char *)str;
@@ -100,35 +95,37 @@ static void	is_int_compatible(const char *str)
 	while (ptn[i])
 	{
 		if (ptn[i] < 48 || ptn[i] > 58)
-			error_and_exit();
+			return (1);
 		i++;
 	}
-	check_int_limits(ptn, sign);
+	return (check_int_limits(ptn, sign));
 }
 
-int	*check_args_are_valid(int argc, char **argv)
+int	*check_args_are_valid(int argc, char **argv, t_data *data)
 {
-	int		j;
 	int		*nums;
 	int		errors;
 
-	j = 1;
-	while (j < argc)
-		is_int_compatible(argv[j++]);
-	j = 0;
+	data->i = 1;
+	errors = 0;
+	while (data->i < argc)
+		errors += is_int_compatible(argv[data->i++]);
+	if (errors)
+		return (NULL);
 	nums = (int *)malloc(sizeof(int) * (argc - 1));
 	if (!nums)
-		error_and_exit();
-	while (j < (argc - 1))
+		return (NULL);
+	data->i = 0;
+	while (data->i < (argc - 1))
 	{
-		nums[j] = ft_atoi(argv[j + 1]);
-		j++;
+		nums[data->i] = ft_atoi(argv[data->i + 1]);
+		data->i++;
 	}	
 	errors = check_if_duplicates(nums, (argc - 1));
-	if (errors != 0)
+	if (errors)
 	{
 		free(nums);
-		error_and_exit();
+		return (NULL);
 	}
 	return (nums);
 }

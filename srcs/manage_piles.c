@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:36:08 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/09/14 16:52:09 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/23 16:24:58 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,12 @@ void	display_pile(t_stack *pile) // fonction de debug et de ctrl
 	ft_printf("%d\n", iter->num);
 }
 
-t_stack	*create_pile(int *nums, int arnb) // do not forget to free everything if malloc error
+t_stack	*create_pile_a(int *nums, int arnb) // do not forget to free everything if malloc error
 {
 	t_stack		*pile;
 	t_stack		*new;
 	int			i;
 
-	if (!nums)
-		return (NULL);
 	pile = stack_new(nums[0]);
 	if (!pile)
 		return (NULL);
@@ -42,7 +40,10 @@ t_stack	*create_pile(int *nums, int arnb) // do not forget to free everything if
 	{
 		new = stack_new(nums[i]);
 		if (!new)
+		{
+			stack_clear(pile);
 			return (NULL);
+		}
 		stack_add_back(&pile, new);
 		i++;
 	}

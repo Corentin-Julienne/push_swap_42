@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:55:29 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/09/14 17:09:55 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/23 18:24:12 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,38 @@
 
 void	error_and_exit(void)
 {
-	ft_printf("Error\n");
-	exit(0);
-}	
+	char	*err_msg;
+
+	err_msg = "Error\n";
+	write(STDERR_FILENO, err_msg, ft_strlen(err_msg));
+	exit(1);
+}
 
 int	main(int argc, char **argv)
 {
-	t_stack		*pile_a;
-	int			*nums;
+	t_data		*data;
 	
 	if (argc == 1)
-		exit(0);
-	nums = check_args_are_valid(argc, argv);
-	pile_a = create_pile(nums, argc - 1);
-	if (!pile_a)
-		return (-1);
-	display_pile(pile_a);
-	sab(&pile_a);
-	display_pile(pile_a);
+		error_and_exit();
+	data = (t_data *)malloc(sizeof(t_data));
+	if (!data)
+		error_and_exit();
+	data->stack_size = argc - 1;
+	data->i = 0;
+	data->nums = check_args_are_valid(argc, argv, data);
+	if (!data->nums)
+	{
+		free(data);
+		error_and_exit();
+	}
+	data->pile_a = create_pile_a(data->nums, argc - 1);
+	if (!data->pile_a)
+	{
+		free(data);
+		error_and_exit();
+	}
+	display_pile(data->pile_a); // test purpose only
+	decision_tree(data->nums, data->pile_a, (argc - 1));
+	display_pile(data->pile_a);
 	return (0);
 }
