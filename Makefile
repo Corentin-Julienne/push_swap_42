@@ -6,22 +6,27 @@
 #    By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/06 16:06:37 by cjulienn          #+#    #+#              #
-#    Updated: 2022/01/23 15:36:46 by cjulienn         ###   ########.fr        #
+#    Updated: 2022/01/24 17:01:13 by cjulienn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= push_swap
 
-SRCS= ./srcs/actions_1.c \
+SRCS= ./srcs/algos/algo_case_2.c \
+	  ./srcs/algos/algo_case_3.c \
+	  ./srcs/algos/algo_case_5.c \
+	  ./srcs/algos/algo_case_100.c \
+	  ./srcs/algos/algo_case_500.c \
+	  ./srcs/actions_1.c \
 	  ./srcs/actions_2.c \
-	  ./srcs/algo_case_3.c \
+	  ./srcs/algo_utils.c \
 	  ./srcs/check_args_validity.c \
 	  ./srcs/decision_tree.c \
 	  ./srcs/manage_piles.c \
+	  ./srcs/outliers.c \
 	  ./srcs/push_swap.c \
 	  ./srcs/stack_utils_1.c \
-	  ./srcs/stack_utils_2.c \
-	  ./srcs/quicksort.c
+	  ./srcs/stack_utils_2.c
 
 OBJS = $(SRCS:.c=.o)
 
