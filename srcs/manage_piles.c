@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:36:08 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/23 16:24:58 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/24 14:13:03 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,37 @@ void	display_pile(t_stack *pile) // fonction de debug et de ctrl
 		iter = iter->next;
 	}
 	ft_printf("%d\n", iter->num);
+}
+
+int	calc_pile_size(t_stack *pile)
+{
+	int		pile_size;
+
+	pile_size = 0;
+	while (pile)
+	{
+		pile_size++;
+		pile = pile->next;
+	}
+	return (pile_size);
+}
+
+int	distance_to_sort(int value, t_stack *pile)
+{
+	int			pile_size;
+	int			dst_from_up;
+
+	pile_size = calc_pile_size(pile);
+	dst_from_up = 0;
+	while (pile && pile->num != value)
+	{
+		dst_from_up++;
+		pile = pile->next;
+	}
+	if (dst_from_up < (pile_size / 2))
+		return (UP);
+	else
+		return (DOWN);
 }
 
 t_stack	*create_pile_a(int *nums, int arnb) // do not forget to free everything if malloc error

@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 15:29:26 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/23 17:17:11 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/24 13:39:19 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	algo_case_three_nums(int *nums, t_stack *pile_a)
 {	
-	int		errors;
+	int errors;
 
 	errors = 0;
 	if (nums[0] > nums[1] && nums[0] < nums[2])

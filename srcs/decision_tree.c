@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 18:10:08 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/23 19:27:06 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/23 20:06:36 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,30 +54,30 @@ static void	calc_positions(int *positions, long long smallest_val,
 	}
 }
 
-int		*get_num_pos(int *nums, t_data *data)
+void	get_num_pos(int *nums, t_data *data)
 {
 	int			*positions;
 	long long	smallest_val;
-	int 		smallest_index;
-	
+	int			smallest_index;
+
 	positions = (int *)malloc(sizeof(int) * data->stack_size);
 	if (!positions)
 		return (NULL);
 	initialize_int_arr(positions, data);
 	calc_positions(positions, smallest_val, smallest_index, data);
-	return (positions);
+	data->positions = positions;
 }
 
-int	decision_tree(int *nums, t_stack *pile_a, int arr_len)
+int	decision_tree(t_data *data, int *nums, t_stack *pile_a, int arr_len)
 {	
 	int		feedback;
-	
+
 	if (arr_len == 2)
 		feedback = algo_case_two_nums(nums, pile_a);
 	else if (arr_len == 3)
 		feedback = algo_case_three_nums(nums, pile_a);
 	else if (arr_len == 5)
-		feedback = algo_case_five_nums(nums, pile_a);
+		feedback = algo_case_five_nums(nums, pile_a, data);
 	else if (arr_len >= 100 && arr_len < 500)
 		feedback = algo_case_100_nums(nums, pile_a);
 	else if (arr_len >= 500)

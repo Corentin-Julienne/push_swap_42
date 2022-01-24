@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:55:29 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/23 18:24:12 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/23 20:07:39 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 		error_and_exit();
 	}
 	display_pile(data->pile_a); // test purpose only
-	decision_tree(data->nums, data->pile_a, (argc - 1));
+	decision_tree(data, data->nums, data->pile_a, (argc - 1));
 	display_pile(data->pile_a);
 	return (0);
 }
