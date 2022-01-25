@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/06 15:55:29 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/25 17:00:36 by cjulienn         ###   ########.fr       */
+/*   Created: 2022/01/25 10:08:28 by cjulienn          #+#    #+#             */
+/*   Updated: 2022/01/25 10:14:24 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "lab.h"
 
-void	test_stuff(t_data *data)
-{
-	data->pile_b = NULL;
-	
-	pb(&(data->pile_a), &(data->pile_b));
-}
 
-void	error_and_exit(void)
-{
-	char	*err_msg;
-
-	err_msg = "Error\n";
-	write(STDERR_FILENO, err_msg, ft_strlen(err_msg));
-	exit(1);
-}
 
 int	main(int argc, char **argv)
 {
@@ -51,8 +37,8 @@ int	main(int argc, char **argv)
 		free(data);
 		error_and_exit();
 	}
-	data->pile_b = NULL;
-	display_pile(data->pile_a, data->pile_b);
-	decision_tree(data, (argc - 1));
+	display_pile(data->pile_a);
+	test_actions(data);
+	display_pile(data->pile_a);
 	return (0);
 }

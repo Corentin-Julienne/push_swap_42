@@ -6,11 +6,11 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 12:01:15 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/25 11:54:54 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/25 10:15:30 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "lab.h"
 
 /* 
 
@@ -30,7 +30,7 @@ Do nothing if a is empty.
 
 */
 
-int	sab(t_stack **pile, int	a_or_b) // functionnal
+int	sab(t_stack **pile, int	a_or_b)
 {	
 	int		tmp;
 
@@ -46,27 +46,25 @@ int	sab(t_stack **pile, int	a_or_b) // functionnal
 	return (0);
 }
 
-int	ss(t_stack **pile_a, t_stack **pile_b) 
+int	ss(t_stack **pile_a, t_stack **pile_b)
 {
 	int		res_a;
 	int		res_b;
 
 	res_a = sab(pile_a, ALPHA);
-	if (res_a != 0)
-		return (-1);
 	res_b = sab(pile_b, BRAVO);
-	if (res_b != 0)
+	if (res_a == -1 || res_b == -1)
 		return (-1);
 	write(STDOUT_FILENO, "ss\n", 3);
 	return (0);
 }
 
-int	pa(t_stack **pile_a, t_stack **pile_b) // functionnal
+int	pa(t_stack **pile_a, t_stack **pile_b)
 {
 	t_stack		*tmp;
 	t_stack		*tmp_2;
 
-	if (*pile_b == NULL)
+	if (!*pile_b)
 		return (-1);
 	tmp = stack_new((*pile_b)->num);
 	stack_add_front(pile_a, tmp);
@@ -82,7 +80,7 @@ int	pa(t_stack **pile_a, t_stack **pile_b) // functionnal
 	return (0);
 }
 
-int	pb(t_stack **pile_a, t_stack **pile_b) // functionnal
+int	pb(t_stack **pile_a, t_stack **pile_b)
 {
 	t_stack		*tmp;
 	t_stack		*tmp_2;

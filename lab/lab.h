@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   lab.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/25 16:55:43 by cjulienn         ###   ########.fr       */
+/*   Created: 2022/01/25 10:08:26 by cjulienn          #+#    #+#             */
+/*   Updated: 2022/01/25 10:13:26 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_LAB_H
+# define PUSH_SWAP_LAB_H
 
 # include "../libft/libft.h"
 # include <stdlib.h>
@@ -51,13 +51,13 @@ typedef struct s_stack
 /*algo_case_2.c*/
 int			algo_case_two_nums(t_stack *pile_a);
 /* algo_case_3.c */
-int			algo_case_three_nums(t_stack *pile_a, int *nums);
+int			algo_case_three_nums(int *nums, t_stack *pile_a);
 /* algo_case_5.c*/
-int			algo_case_five_nums(t_stack *pile_a, t_stack *pile_b);
+int			algo_case_five_nums(t_stack *pile_a);
 /*algo_case_100.c*/
-int			algo_case_100_nums(t_stack *pile_a, t_stack *pile_b);
+int			algo_case_100_nums(t_stack *pile_a);
 /*algo_case_500.c*/
-int			algo_case_500_nums(t_stack *pile_a, t_stack *pile_b);
+int			algo_case_500_nums(t_stack *pile_a);
 
 /* ACTIONS */
 
@@ -74,12 +74,12 @@ int			rrr(t_stack **pile_a, t_stack **pile_b);
 
 /* algo_utils.c */
 
-int			move_chunk_to_b(t_stack *pile_a, t_stack *pile_b,
-						 int chunk, int errors);
-int			sort_outlier(t_stack *pile_a, t_stack *pile_b,
-						 int outlier, int errors);
-int			sort_pile_bravo(t_stack *pile_b, t_stack *pile_a, int errors);
-int			sort_pile_alpha(t_stack *pile_a, int chunk, int errors);
+int			move_chunk_to_b(t_stack **pile_a, t_stack **pile_b,
+			 int chunk, int errors);
+int			sort_outlier(t_stack **pile_b, t_stack **pile_a,
+				 int outlier, int errors);
+int			sort_pile_bravo(t_stack **pile_b, t_stack **pile_a, int errors);
+int			sort_pile_alpha(t_stack **pile_a, int chunk, int errors);
 
 /* check args validity */
 
@@ -88,7 +88,7 @@ int			*check_args_are_valid(int argc, char **argv, t_data *data);
 /* decision_tree.c*/
 
 void		get_num_pos(int *nums, t_data *data);
-int			decision_tree(t_data *data, int arr_len);
+int			decision_tree(int *nums, t_stack *pile_a, int arr_len);
 
 /* push_swap.c */
 
@@ -96,7 +96,7 @@ void		error_and_exit(void);
 
 /* manage_piles.c */
 
-void		display_pile(t_stack *pile_a, t_stack *pile_b);
+void		display_pile(t_stack *pile);
 int			calc_pile_size(t_stack *pile);
 int			distance_to_top_pile(int value, t_stack *pile);
 int			distance_from_sorted_pos(int value, t_stack *pile);
@@ -115,8 +115,8 @@ void		stack_add_front(t_stack **stack, t_stack *new);
 void		stack_add_back(t_stack **stack, t_stack *new);
 /* stack_utils_2.c */
 t_stack		*stack_last(t_stack *stack);
-t_stack		*stack_penultimate(t_stack *stack);
 int			stack_size(t_stack *stack);
 t_stack		*stack_new(int nb);
 
 #endif
+

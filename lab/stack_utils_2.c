@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 13:28:54 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/25 11:33:43 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/24 17:10:38 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,8 @@ t_stack	*stack_last(t_stack *stack)
 	size_t	size;
 
 	if (!stack)
-		return (NULL);
+		return (stack);
 	size = stack_size(stack);
-	while (size - 1 > 0)
-	{
-		stack = stack->next;
-		size--;
-	}
-	return (stack);
-}
-
-t_stack	*stack_penultimate(t_stack *stack)
-{
-	size_t	size;
-
-	if (!stack)
-		return (NULL);
-	size = stack_size(stack) - 1;
 	while (size - 1 > 0)
 	{
 		stack = stack->next;

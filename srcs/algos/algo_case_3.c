@@ -6,15 +6,15 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 15:29:26 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/24 13:39:19 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:59:40 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int	algo_case_three_nums(int *nums, t_stack *pile_a)
+int	algo_case_three_nums(t_stack *pile_a, int *nums)
 {	
-	int errors;
+	int 	errors;
 
 	errors = 0;
 	if (nums[0] > nums[1] && nums[0] < nums[2])
@@ -33,5 +33,6 @@ int	algo_case_three_nums(int *nums, t_stack *pile_a)
 	}
 	else if (nums[0] < nums[1] && nums[0] > nums[2])
 		errors += rrab(&pile_a, ALPHA);
+	display_pile(pile_a, NULL);
 	return (errors);
 }

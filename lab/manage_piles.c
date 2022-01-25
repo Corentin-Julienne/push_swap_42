@@ -6,28 +6,18 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:36:08 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/25 11:43:58 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/24 19:49:14 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	display_pile(t_stack *pile_a, t_stack *pile_b) // debug function only
+void	display_pile(t_stack *pile)
 {
 	t_stack		*iter;
 
 	printf("PILE A\n");
-	iter = pile_a;
-	while (iter->next)
-	{
-		ft_printf("%d\n", iter->num);
-		iter = iter->next;
-	}
-	ft_printf("%d\n", iter->num);
-	if (!pile_b)
-		return ;
-	printf("PILE B\n");
-	iter = pile_b;
+	iter = pile;
 	while (iter->next)
 	{
 		ft_printf("%d\n", iter->num);

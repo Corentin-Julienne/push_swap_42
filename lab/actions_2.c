@@ -6,11 +6,11 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 12:01:17 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/25 11:38:44 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/25 10:15:36 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "lab.h"
 
 /* 
 
@@ -32,10 +32,9 @@ rr : ra and rb at the same time.
 
 */
 
-int	rrab(t_stack **stack, int a_or_b) // functionnal
+int	rrab(t_stack **stack, int a_or_b)
 {
 	t_stack		*last_elem;
-	t_stack		*new_last_elem;
 	t_stack		*first;
 	int			num_tmp;
 
@@ -45,10 +44,9 @@ int	rrab(t_stack **stack, int a_or_b) // functionnal
 	last_elem = stack_last(last_elem);
 	num_tmp = last_elem->num;
 	stack_delone(&last_elem);
-	
-	new_last_elem = *stack;
-	new_last_elem = stack_penultimate(new_last_elem);
-	new_last_elem->next = NULL;
+	last_elem = *stack;
+	last_elem = stack_last(last_elem);
+	last_elem->next = NULL;
 	first = stack_new(num_tmp);
 	if (!first)
 		return (-1);
@@ -66,16 +64,14 @@ int	rrr(t_stack **pile_a, t_stack **pile_b)
 	int		res_rb;
 
 	res_ra = rrab(pile_a, COMBINED);
-	if (res_ra != 0)
-		return (-1);
 	res_rb = rrab(pile_b, COMBINED);
-	if (res_rb != 0)
+	if (res_ra == -1 || res_rb == -1)
 		return (-1);
 	write(STDOUT_FILENO, "rrr\n", 4);
 	return (0);
 }
 
-int	rab(t_stack **stack, int a_or_b) // functionnal
+int	rab(t_stack **stack, int a_or_b)
 {
 	int			num_tmp;
 	t_stack		*new;
@@ -104,10 +100,8 @@ int	rr(t_stack **pile_a, t_stack **pile_b)
 	int		res_rb;
 
 	res_ra = rab(pile_a, COMBINED);
-	if (res_ra != 0)
-		return (-1);
 	res_rb = rab(pile_b, COMBINED);
-	if (res_rb != 0)
+	if (res_ra == -1 || res_rb == -1)
 		return (-1);
 	write(STDOUT_FILENO, "rr\n", 3);
 	return (0);

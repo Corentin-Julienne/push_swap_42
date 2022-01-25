@@ -6,18 +6,11 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:55:29 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/25 17:00:36 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/24 19:49:51 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	test_stuff(t_data *data)
-{
-	data->pile_b = NULL;
-	
-	pb(&(data->pile_a), &(data->pile_b));
-}
 
 void	error_and_exit(void)
 {
@@ -51,8 +44,8 @@ int	main(int argc, char **argv)
 		free(data);
 		error_and_exit();
 	}
-	data->pile_b = NULL;
-	display_pile(data->pile_a, data->pile_b);
-	decision_tree(data, (argc - 1));
+	display_pile(data->pile_a);
+	decision_tree(data->nums, data->pile_a, (argc - 1));
+	display_pile(data->pile_a);
 	return (0);
 }
