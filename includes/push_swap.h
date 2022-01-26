@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/25 16:55:43 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:44:09 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,15 @@ typedef struct s_stack
 /* ALGOS */
 
 /*algo_case_2.c*/
-int			algo_case_two_nums(t_stack *pile_a);
+t_stack		*algo_case_two_nums(t_stack *pile_a);
 /* algo_case_3.c */
-int			algo_case_three_nums(t_stack *pile_a, int *nums);
+t_stack		*algo_case_three_nums(t_stack *pile_a, int *nums);
 /* algo_case_5.c*/
-int			algo_case_five_nums(t_stack *pile_a, t_stack *pile_b);
+t_stack		*algo_case_five_nums(t_stack *pile_a, t_stack *pile_b);
 /*algo_case_100.c*/
-int			algo_case_100_nums(t_stack *pile_a, t_stack *pile_b);
+t_stack		*algo_case_100_nums(t_stack *pile_a, t_stack *pile_b);
 /*algo_case_500.c*/
-int			algo_case_500_nums(t_stack *pile_a, t_stack *pile_b);
+t_stack		*algo_case_500_nums(t_stack *pile_a, t_stack *pile_b);
 
 /* ACTIONS */
 
@@ -74,20 +74,23 @@ int			rrr(t_stack **pile_a, t_stack **pile_b);
 
 /* algo_utils.c */
 
-int			move_chunk_to_b(t_stack *pile_a, t_stack *pile_b,
-						 int chunk, int errors);
-int			sort_outlier(t_stack *pile_a, t_stack *pile_b,
-						 int outlier, int errors);
-int			sort_pile_bravo(t_stack *pile_b, t_stack *pile_a, int errors);
-int			sort_pile_alpha(t_stack *pile_a, int chunk, int errors);
+int			*pile_to_int_arr(t_stack *pile);
+int			move_chunk_to_b(t_stack *pile_a, t_stack *pile_b, int chunk);
+int			sort_outlier(t_stack *pile_a, t_stack *pile_b, int outlier);
+int			sort_pile_bravo(t_stack *pile_b, t_stack *pile_a);
+int			sort_pile_alpha(t_stack *pile_a, int chunk);
 
 /* check args validity */
 
+int			check_if_already_sorted(int *nums, int nbr_c);
 int			*check_args_are_valid(int argc, char **argv, t_data *data);
+
+/* debug_utils.c */
+
+void		display_pile(t_stack *pile_a, t_stack *pile_b);
 
 /* decision_tree.c*/
 
-void		get_num_pos(int *nums, t_data *data);
 int			decision_tree(t_data *data, int arr_len);
 
 /* push_swap.c */
@@ -96,7 +99,6 @@ void		error_and_exit(void);
 
 /* manage_piles.c */
 
-void		display_pile(t_stack *pile_a, t_stack *pile_b);
 int			calc_pile_size(t_stack *pile);
 int			distance_to_top_pile(int value, t_stack *pile);
 int			distance_from_sorted_pos(int value, t_stack *pile);

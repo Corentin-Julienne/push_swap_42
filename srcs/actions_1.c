@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 12:01:15 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/25 11:54:54 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/25 19:44:19 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	sab(t_stack **pile, int	a_or_b) // functionnal
 	return (0);
 }
 
-int	ss(t_stack **pile_a, t_stack **pile_b) 
+int	ss(t_stack **pile_a, t_stack **pile_b) // functionnal
 {
 	int		res_a;
 	int		res_b;

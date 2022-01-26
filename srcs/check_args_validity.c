@@ -6,13 +6,13 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:26:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/23 15:06:37 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/26 13:34:25 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	check_if_already_sorted(int *nums, int nbr_c)
+int	check_if_already_sorted(int *nums, int nbr_c)
 {
 	int		not_sorted;
 	int		i;

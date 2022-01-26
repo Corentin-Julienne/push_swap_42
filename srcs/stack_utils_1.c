@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 13:09:53 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/24 17:10:19 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/25 20:33:57 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	stack_delone(t_stack **stack)
 	{
 		*stack = NULL;
 		free(*stack);
-	}	
+	}
 }
 
 void	stack_clear(t_stack **stack)
@@ -38,7 +38,7 @@ void	stack_clear(t_stack **stack)
 
 void	stack_add_front(t_stack **stack, t_stack *new)
 {
-	if (stack && new)
+	if (*stack && new)
 	{
 		new->next = *stack;
 		*stack = new;
@@ -59,7 +59,7 @@ void	stack_add_back(t_stack **stack, t_stack *new)
 		*stack = new;
 		return ;
 	}
-	if (stack && new)
+	if (*stack && new)
 	{
 		last_elem = stack_last(*stack);
 		last_elem->next = new;

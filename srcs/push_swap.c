@@ -6,18 +6,11 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:55:29 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/25 17:00:36 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:54:24 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	test_stuff(t_data *data)
-{
-	data->pile_b = NULL;
-	
-	pb(&(data->pile_a), &(data->pile_b));
-}
 
 void	error_and_exit(void)
 {
