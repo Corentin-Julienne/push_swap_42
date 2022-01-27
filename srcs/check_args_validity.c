@@ -6,27 +6,26 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:26:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/26 13:34:25 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/26 19:00:54 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	check_if_already_sorted(int *nums, int nbr_c)
+int	check_if_already_sorted(int *nums_input, int nbr_c)
 {
-	int		not_sorted;
-	int		i;
+	int	*nums_dupl;
 
-	not_sorted = 0;
-	i = 0;
-	while (i < nbr_c - 1)
+	nums_dupl = int_arr_dup(nums_input, nbr_c);
+	if (!nums_dupl)
+		return (-1);
+	quicksort(nums_dupl, 0, nbr_c - 1);
+	if (are_arr_equals(nums_input, nums_dupl, nbr_c) == 1)
 	{
-		if (nums[i] > nums[i + 1])
-			not_sorted++;
-		i++;
-	}
-	if (not_sorted == 0)
+		free(nums_dupl);
 		return (1);
+	}
+	free(nums_dupl);
 	return (0);
 }
 
@@ -50,6 +49,8 @@ static int	check_if_duplicates(int	*nums, int nbr_c)
 		j++;
 		i = 0;
 	}
+	if (errors)
+		return (1);
 	errors += check_if_already_sorted(nums, nbr_c);
 	return (errors);
 }

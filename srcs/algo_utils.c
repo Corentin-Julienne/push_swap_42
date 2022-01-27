@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:54:58 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/25 21:33:07 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/26 19:25:28 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,50 +32,48 @@ int	*pile_to_int_arr(t_stack *pile)
 	return (nums);
 }
 
-int	move_chunk_to_b(t_stack *pile_a, t_stack *pile_b, int chunk)
+int	move_chunk_to_b(t_data *data, int chunk)
 {
 	while (chunk > 0)
 	{
-		pb(&pile_a, &pile_b);
+		pb(&(data->pile_a), &(data->pile_b));
 		chunk--;
 	}
 	return (0);
 }
 
-int	sort_outlier(t_stack *pile_a, t_stack *pile_b, int outlier)
+void	sort_outlier(t_data *data, int outlier)
 {
-	if (distance_to_top_pile(outlier, pile_b) == UP)
+	if (distance_to_top_pile(outlier, data->pile_b) == UP)
 	{
-		while (pile_b->num != outlier)
-			rab(&pile_b, BRAVO);
+		while (data->pile_b->num != outlier)
+			rab(&(data->pile_b), BRAVO);
 	}
 	else
 	{
-		while (pile_b->num != outlier)
-			rrab(&pile_b, BRAVO);
+		while (data->pile_b->num != outlier)
+			rrab(&(data->pile_b), BRAVO);
 	}
-	pa(&pile_a, &pile_b);
-	return (0);
+	pa(&(data->pile_a), &(data->pile_b));
 }
 
-int	sort_pile_bravo(t_stack *pile_b, t_stack *pile_a)
+void	sort_pile_bravo(t_data *data)
 {
 	int		*outliers;
 
-	while (pile_b)
+	while (data->pile_b)
 	{
-		outliers = find_outliers(pile_b);
+		outliers = find_outliers(data->pile_b);
 		if (!outliers)
 			return (-1);
-		sort_outlier(pile_a, pile_b, outliers[1]);
-		sort_outlier(pile_a, pile_b, outliers[0]);
-		rab(&pile_a, ALPHA);
+		sort_outlier(data, outliers[1]);
+		sort_outlier(data, outliers[0]);
+		rab(&(data->pile_a), ALPHA);
 		free(outliers);
 	}
-	return (0);
 }
 
-int	sort_pile_alpha(t_stack *pile_a, int chunk)
+void	sort_pile_alpha(t_data *data, int chunk)
 {
 	int		num_to_sort;
 
@@ -85,7 +83,7 @@ int	sort_pile_alpha(t_stack *pile_a, int chunk)
 		num_to_sort = ((chunk - 1) / 2) + 1;
 	while (num_to_sort < 0)
 	{
-		rab(&pile_a, ALPHA);
+		rab(&(data->pile_a), ALPHA);
 		num_to_sort--;
 	}
 	return (0);

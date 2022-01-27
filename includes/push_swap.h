@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/26 15:44:09 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/26 19:24:58 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,13 @@ typedef struct s_stack
 /* ALGOS */
 
 /*algo_case_2.c*/
-t_stack		*algo_case_two_nums(t_stack *pile_a);
+void		algo_case_two_nums(t_data *data);
 /* algo_case_3.c */
-t_stack		*algo_case_three_nums(t_stack *pile_a, int *nums);
+void		algo_case_three_nums(t_data *data, int *nums);
 /* algo_case_5.c*/
-t_stack		*algo_case_five_nums(t_stack *pile_a, t_stack *pile_b);
+void		algo_case_five_nums(t_data *data);
 /*algo_case_100.c*/
-t_stack		*algo_case_100_nums(t_stack *pile_a, t_stack *pile_b);
-/*algo_case_500.c*/
-t_stack		*algo_case_500_nums(t_stack *pile_a, t_stack *pile_b);
+void		algo_case_100_inf_nums(t_data *data);
 
 /* ACTIONS */
 
@@ -75,10 +73,10 @@ int			rrr(t_stack **pile_a, t_stack **pile_b);
 /* algo_utils.c */
 
 int			*pile_to_int_arr(t_stack *pile);
-int			move_chunk_to_b(t_stack *pile_a, t_stack *pile_b, int chunk);
-int			sort_outlier(t_stack *pile_a, t_stack *pile_b, int outlier);
-int			sort_pile_bravo(t_stack *pile_b, t_stack *pile_a);
-int			sort_pile_alpha(t_stack *pile_a, int chunk);
+int			move_chunk_to_b(t_data *data, int chunk);
+void		sort_outlier(t_data *data, int outlier);
+void		sort_pile_bravo(t_data *data);
+void		sort_pile_alpha(t_data *data, int chunk);
 
 /* check args validity */
 
@@ -96,6 +94,12 @@ int			decision_tree(t_data *data, int arr_len);
 /* push_swap.c */
 
 void		error_and_exit(void);
+
+/* quicksort.c */
+
+int			*int_arr_dup(int *to_cpy, int arr_size);
+int			are_arr_equals(int *arr_a, int *arr_b, int arr_size);
+void		quicksort(int *nums, int begin, int end);
 
 /* manage_piles.c */
 

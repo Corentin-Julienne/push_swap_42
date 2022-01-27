@@ -5,52 +5,52 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 19:51:25 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/09/15 17:17:18 by cjulienn         ###   ########.fr       */
+/*   Created: 2022/01/27 11:17:03 by cjulienn          #+#    #+#             */
+/*   Updated: 2022/01/27 11:58:19 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "lab.h"
 
-void	ft_swap(int *a, int *b)
+static void	ft_swap(int *a, int *b)
 {
 	int		tmp;
 
 	tmp = *a;
 	*a = *b;
-	*a = tmp;
+	*b = tmp;
 }
 
-int	partition(int *nums, int begin, int end) // to test
+static int	partition(int *nums, int begin, int end)
 {
-	int		i;
+    int		pivot;
+    int		i;
 	int		j;
-	int		pivot;
 
 	pivot = nums[end];
-	i = begin;
-	j = end - 1;
-	while (i <= j)
+	i = begin - 1;
+	j = begin;
+	while (j <= (end - 1))
 	{
-		while (i < end && nums[i])
-			i++;
-		while (j >= begin && nums[j])
-			j--;
-		if (i < j)
-			ft_swap(&nums[i], &nums[j]);
+		if (nums[j] < pivot)
+        {
+            i++;
+            ft_swap(&nums[i], &nums[j]);
+        }
+		j++;
 	}
-	pivot = nums[i];
-	return (pivot);
+    ft_swap(&nums[i + 1], &nums[end]);
+    return (i + 1);
 }
 
-void	quicksort(int *nums, int begin, int end)
+void quicksort(int *nums, int begin, int end)
 {
-	int		i;
+    int		index;
 
 	if (begin < end)
 	{
-		i = partition(nums, begin, end);
-		quicksort(nums, begin, i - 1);
-		quicksort(nums, i + 1, end);
-	}	
+		index = partition(nums, begin, end);
+		quicksort(nums, begin, index - 1);
+		quicksort(nums, index + 1, end);
+	}
 }

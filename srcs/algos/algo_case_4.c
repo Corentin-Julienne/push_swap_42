@@ -6,8 +6,13 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 19:30:42 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/25 19:31:31 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/26 19:27:03 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+void	algo_case_four_nums(t_data *data)
+{
+	
+}

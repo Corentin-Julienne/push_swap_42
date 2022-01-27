@@ -6,14 +6,13 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 15:42:22 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/25 20:07:11 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/26 16:49:36 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-t_stack	*algo_case_two_nums(t_stack *pile_a)
+void	algo_case_two_nums(t_data *data)
 {
-	sab(&pile_a, ALPHA);
-	return (pile_a);
+	sab(&(data->pile_a), ALPHA);
 }
