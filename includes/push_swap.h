@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/26 19:24:58 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:10:15 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,12 @@ typedef struct s_stack
 void		algo_case_two_nums(t_data *data);
 /* algo_case_3.c */
 void		algo_case_three_nums(t_data *data, int *nums);
+/* algo_case_4.c */
+void		algo_case_four_nums(t_data *data);
 /* algo_case_5.c*/
 void		algo_case_five_nums(t_data *data);
 /*algo_case_100.c*/
-void		algo_case_100_inf_nums(t_data *data);
+void		algo_case_6_inf_nums(t_data *data);
 
 /* ACTIONS */
 

@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:54:58 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/26 19:25:28 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/28 12:40:39 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	*pile_to_int_arr(t_stack *pile)
 
 int	move_chunk_to_b(t_data *data, int chunk)
 {
-	while (chunk > 0)
+	while (chunk >= 0)
 	{
 		pb(&(data->pile_a), &(data->pile_b));
 		chunk--;
@@ -65,7 +65,7 @@ void	sort_pile_bravo(t_data *data)
 	{
 		outliers = find_outliers(data->pile_b);
 		if (!outliers)
-			return (-1);
+			return ;
 		sort_outlier(data, outliers[1]);
 		sort_outlier(data, outliers[0]);
 		rab(&(data->pile_a), ALPHA);
@@ -77,6 +77,7 @@ void	sort_pile_alpha(t_data *data, int chunk)
 {
 	int		num_to_sort;
 
+	printf("go till there\n");
 	if (chunk % 2 == 0)
 		num_to_sort = chunk / 2;
 	else
@@ -86,5 +87,4 @@ void	sort_pile_alpha(t_data *data, int chunk)
 		rab(&(data->pile_a), ALPHA);
 		num_to_sort--;
 	}
-	return (0);
 }
