@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/28 11:10:15 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/31 17:54:36 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ typedef struct s_data
 	int				*nums;
 	int				*positions;
 	int				stack_size;
+	int				chunk_num;
+	int				transfer;
+	int				ajust;
 	struct s_stack	*pile_a;
 	struct s_stack	*pile_b;
 }					t_data;
@@ -58,6 +61,7 @@ void		algo_case_four_nums(t_data *data);
 void		algo_case_five_nums(t_data *data);
 /*algo_case_100.c*/
 void		algo_case_6_inf_nums(t_data *data);
+int			move_chunk_to_b(t_data *data, int chunk);
 
 /* ACTIONS */
 
@@ -75,10 +79,9 @@ int			rrr(t_stack **pile_a, t_stack **pile_b);
 /* algo_utils.c */
 
 int			*pile_to_int_arr(t_stack *pile);
-int			move_chunk_to_b(t_data *data, int chunk);
 void		sort_outlier(t_data *data, int outlier);
 void		sort_pile_bravo(t_data *data);
-void		sort_pile_alpha(t_data *data, int chunk);
+void		sort_pile_alpha(t_data *data);
 
 /* check args validity */
 

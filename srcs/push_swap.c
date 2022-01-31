@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:55:29 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/26 16:51:29 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/31 17:54:15 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	main(int argc, char **argv)
 	}
 	data->pile_b = NULL;
 	decision_tree(data, (argc - 1));
-	display_pile(data->pile_a, data->pile_b);
 	stack_clear(&data->pile_a);
 	return (0);
 }

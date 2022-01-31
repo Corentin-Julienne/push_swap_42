@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:41:38 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/26 15:44:59 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:36:24 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@ void	display_pile(t_stack *pile_a, t_stack *pile_b)
 	}
 	ft_printf("%d\n", iter->num);
 	if (!pile_b)
+	{
+		ft_printf("\n----------------------------------\n");
 		return ;
+	}
+		
 	printf("PILE B\n");
 	iter = pile_b;
 	while (iter->next)
@@ -36,4 +40,5 @@ void	display_pile(t_stack *pile_a, t_stack *pile_b)
 		iter = iter->next;
 	}
 	ft_printf("%d\n", iter->num);
+	ft_printf("\n----------------------------------\n");
 }

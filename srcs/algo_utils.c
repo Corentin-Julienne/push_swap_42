@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:54:58 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/28 12:40:39 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/01/31 17:24:01 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,6 @@ int	*pile_to_int_arr(t_stack *pile)
 	return (nums);
 }
 
-int	move_chunk_to_b(t_data *data, int chunk)
-{
-	while (chunk >= 0)
-	{
-		pb(&(data->pile_a), &(data->pile_b));
-		chunk--;
-	}
-	return (0);
-}
-
 void	sort_outlier(t_data *data, int outlier)
 {
 	if (distance_to_top_pile(outlier, data->pile_b) == UP)
@@ -61,6 +51,7 @@ void	sort_pile_bravo(t_data *data)
 {
 	int		*outliers;
 
+	data->transfer = 0;
 	while (data->pile_b)
 	{
 		outliers = find_outliers(data->pile_b);
@@ -69,22 +60,16 @@ void	sort_pile_bravo(t_data *data)
 		sort_outlier(data, outliers[1]);
 		sort_outlier(data, outliers[0]);
 		rab(&(data->pile_a), ALPHA);
+		data->transfer++;
 		free(outliers);
 	}
 }
 
-void	sort_pile_alpha(t_data *data, int chunk)
+void	sort_pile_alpha(t_data *data)
 {
-	int		num_to_sort;
-
-	printf("go till there\n");
-	if (chunk % 2 == 0)
-		num_to_sort = chunk / 2;
-	else
-		num_to_sort = ((chunk - 1) / 2) + 1;
-	while (num_to_sort < 0)
+	while (data->transfer > 0)
 	{
 		rab(&(data->pile_a), ALPHA);
-		num_to_sort--;
+		data->transfer--;
 	}
 }
