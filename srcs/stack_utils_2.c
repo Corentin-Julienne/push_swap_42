@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 13:28:54 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/25 11:33:43 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:51:53 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ t_stack	*stack_new(int nb)
 	if (!new)
 		return (NULL);
 	new->num = nb;
+	new->next = -1;
 	new->next = NULL;
+	new->sorted_pos = NULL;
 	return (new);
 }

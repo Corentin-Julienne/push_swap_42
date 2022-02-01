@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:26:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/26 19:00:54 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/01 14:56:18 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,27 +102,27 @@ static int	is_int_compatible(const char *str)
 	return (check_int_limits(ptn, sign));
 }
 
-int	*check_args_are_valid(int argc, char **argv, t_data *data)
+int	*check_args_are_valid(char **input, t_data *data)
 {
 	int		*nums;
 	int		errors;
 
-	data->i = 1;
+	data->i = 0;
 	errors = 0;
-	while (data->i < argc)
-		errors += is_int_compatible(argv[data->i++]);
+	while (data->i < data->stack_size)
+		errors += is_int_compatible(input[data->i++]);
 	if (errors)
 		return (NULL);
-	nums = (int *)malloc(sizeof(int) * (argc - 1));
+	nums = (int *)malloc(sizeof(int) * (data->stack_size));
 	if (!nums)
 		return (NULL);
 	data->i = 0;
-	while (data->i < (argc - 1))
+	while (data->i < data->stack_size)
 	{
-		nums[data->i] = ft_atoi(argv[data->i + 1]);
+		nums[data->i] = ft_atoi(input[data->i]);
 		data->i++;
 	}	
-	errors = check_if_duplicates(nums, (argc - 1));
+	errors = check_if_duplicates(nums, data->stack_size);
 	if (errors)
 	{
 		free(nums);

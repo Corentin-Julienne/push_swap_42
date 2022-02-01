@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 18:10:08 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/31 17:52:55 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/01 12:09:39 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	decision_tree(t_data *data, int arr_len)
 {
+	data->counter = 0;
 	if (arr_len == 2)
 		algo_case_two_nums(data);
 	else if (arr_len == 3)

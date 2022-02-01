@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 22:43:57 by user42            #+#    #+#             */
-/*   Updated: 2022/01/27 11:15:11 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/01 12:25:20 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_generator(int size, int min, int max)
 		return ;
 	}
 	tab = (int *)malloc(sizeof(*tab) * size);
+	i = 0;
 	while (i < size)
 		tab[i++] = 0;
 	i = 0;

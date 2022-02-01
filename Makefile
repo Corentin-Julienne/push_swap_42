@@ -6,7 +6,7 @@
 #    By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/06 16:06:37 by cjulienn          #+#    #+#              #
-#    Updated: 2022/01/28 10:15:41 by cjulienn         ###   ########.fr        #
+#    Updated: 2022/02/01 14:28:28 by cjulienn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS= ./srcs/algos/algo_case_2.c \
 	  ./srcs/check_args_validity.c \
 	  ./srcs/debug_utils.c \
 	  ./srcs/decision_tree.c \
+	  ./srcs/format_input.c \
 	  ./srcs/manage_piles.c \
 	  ./srcs/outliers.c \
 	  ./srcs/push_swap.c \

@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 15:41:53 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/31 17:53:02 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/01 12:19:26 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ int	move_chunk_to_b(t_data *data, int chunk)
 	{
 		if (is_in_chunk(data, nums_sorted, chunk_total) == 1)
 		{
-			pb(&(data->pile_a), &(data->pile_b));
+			pb(&(data->pile_a), &(data->pile_b), data);
 			chunk--;
 		}
 		else
 		{
-			rab(&(data->pile_a), ALPHA);
+			rab(&(data->pile_a), ALPHA, data);
 			data->ajust++;
 		}
 	}
@@ -99,7 +99,7 @@ void	algo_case_6_inf_nums(t_data *data)
 		move_chunk_to_b(data, chunk);
 		while (data->ajust > 0)
 		{
-			rrab(&(data->pile_a), ALPHA);
+			rrab(&(data->pile_a), ALPHA, data);
 			data->ajust--;
 		}
 		sort_pile_bravo(data);
@@ -112,7 +112,7 @@ void	algo_case_6_inf_nums(t_data *data)
 	move_chunk_to_b(data, chunk);
 	while (data->ajust > 0)
 	{
-		rrab(&(data->pile_a), ALPHA);
+		rrab(&(data->pile_a), ALPHA, data);
 		data->ajust--;
 	}
 	sort_pile_bravo(data);

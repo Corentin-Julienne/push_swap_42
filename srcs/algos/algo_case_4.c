@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 19:30:42 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/28 10:53:36 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/01 12:18:06 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static void	sort_last_param(t_data *data, int *nums)
 		{
 			if (distance_from_sorted_pos(data->pile_a->num, data->pile_a)
 				 == CLOCK)
-				rab(&(data->pile_a), ALPHA);
+				rab(&(data->pile_a), ALPHA, data);
 			else
-				rrab(&(data->pile_a), ALPHA);
+				rrab(&(data->pile_a), ALPHA, data);
 		}	
 		else
 		{
@@ -40,12 +40,12 @@ void	algo_case_four_nums(t_data *data)
 {
 	int		*nums;
 
-	pb(&(data->pile_a), &(data->pile_b));
+	pb(&(data->pile_a), &(data->pile_b), data);
 	nums = pile_to_int_arr(data->pile_a);
 	if (!nums)
 		return ;
 	algo_case_three_nums(data, nums);
-	pa(&(data->pile_a), &(data->pile_b));
+	pa(&(data->pile_a), &(data->pile_b), data);
 	free(nums);
 	nums = pile_to_int_arr(data->pile_a);
 	if (!nums)

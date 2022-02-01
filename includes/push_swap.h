@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/31 17:54:36 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:51:26 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ typedef struct s_data
 	int				i;
 	int				j;
 	int				*nums;
-	int				*positions;
 	int				stack_size;
 	int				chunk_num;
 	int				transfer;
 	int				ajust;
+	int				counter;
 	struct s_stack	*pile_a;
 	struct s_stack	*pile_b;
 }					t_data;
@@ -46,7 +46,9 @@ typedef struct s_data
 typedef struct s_stack
 {
 	int				num;
+	int				sorted_pos;
 	struct s_stack	*next;
+	struct s_stack	*prev;
 }					t_stack;
 
 /* ALGOS */
@@ -66,15 +68,15 @@ int			move_chunk_to_b(t_data *data, int chunk);
 /* ACTIONS */
 
 /* actions_1.c */
-int			sab(t_stack **pile, int	a_or_b);
-int			ss(t_stack **pile_a, t_stack **pile_b);
-int			pa(t_stack **pile_a, t_stack **pile_b);
-int			pb(t_stack **pile_a, t_stack **pile_b);
+int			sab(t_stack **pile, int	a_or_b, t_data *data);
+int			ss(t_stack **pile_a, t_stack **pile_b, t_data *data);
+int			pa(t_stack **pile_a, t_stack **pile_b, t_data *data);
+int			pb(t_stack **pile_a, t_stack **pile_b, t_data *data);
 /* actions_2.c */
-int			rab(t_stack **stack, int a_or_b);
-int			rr(t_stack **pile_a, t_stack **pile_b);
-int			rrab(t_stack **stack, int a_or_b);
-int			rrr(t_stack **pile_a, t_stack **pile_b);
+int			rab(t_stack **stack, int a_or_b, t_data *data);
+int			rr(t_stack **pile_a, t_stack **pile_b, t_data *data);
+int			rrab(t_stack **stack, int a_or_b, t_data *data);
+int			rrr(t_stack **pile_a, t_stack **pile_b, t_data *data);
 
 /* algo_utils.c */
 
@@ -86,7 +88,7 @@ void		sort_pile_alpha(t_data *data);
 /* check args validity */
 
 int			check_if_already_sorted(int *nums, int nbr_c);
-int			*check_args_are_valid(int argc, char **argv, t_data *data);
+int			*check_args_are_valid(char **input, t_data *data);
 
 /* debug_utils.c */
 
@@ -96,9 +98,9 @@ void		display_pile(t_stack *pile_a, t_stack *pile_b);
 
 int			decision_tree(t_data *data, int arr_len);
 
-/* push_swap.c */
+/* format_input.c */
 
-void		error_and_exit(void);
+char		**format_input(int argc, char **argv, t_data *data);
 
 /* quicksort.c */
 

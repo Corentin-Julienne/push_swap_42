@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 15:41:57 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/26 18:17:00 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/01 12:18:49 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static int	is_within_interval(t_stack *pile_b, int *nums, int num_size)
 static void	handle_within_interval(t_data *data, int *nums, int num_len)
 {
 	while (data->pile_b->num > data->pile_a->num)
-		rab(&(data->pile_a), ALPHA);
-	pa(&(data->pile_a), &(data->pile_b));
+		rab(&(data->pile_a), ALPHA, data);
+	pa(&(data->pile_a), &(data->pile_b), data);
 	while (42)
 	{
 		free(nums);
@@ -36,9 +36,9 @@ static void	handle_within_interval(t_data *data, int *nums, int num_len)
 		{
 			if (distance_from_sorted_pos(data->pile_a->num, data->pile_a)
 				 == CLOCK)
-				rab(&(data->pile_a), ALPHA);
+				rab(&(data->pile_a), ALPHA, data);
 			else
-				rrab(&(data->pile_a), ALPHA);
+				rrab(&(data->pile_a), ALPHA, data);
 		}	
 		else
 		{
@@ -50,9 +50,9 @@ static void	handle_within_interval(t_data *data, int *nums, int num_len)
 
 static void	handle_outside_interval(t_data *data, int *nums)
 {
-	pa(&(data->pile_a), &(data->pile_b));
+	pa(&(data->pile_a), &(data->pile_b), data);
 	if (data->pile_a->num > nums[0])
-		rab(&(data->pile_a), ALPHA);
+		rab(&(data->pile_a), ALPHA, data);
 	free(nums);
 }
 
@@ -80,8 +80,8 @@ void	algo_case_five_nums(t_data *data)
 {
 	int			*three_nums;
 
-	pb(&(data->pile_a), &(data->pile_b));
-	pb(&(data->pile_a), &(data->pile_b));
+	pb(&(data->pile_a), &(data->pile_b), data);
+	pb(&(data->pile_a), &(data->pile_b), data);
 	three_nums = (int *)malloc(sizeof(int) * 3);
 	if (!three_nums)
 		return ;

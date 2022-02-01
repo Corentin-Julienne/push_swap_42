@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:54:58 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/31 17:24:01 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/01 12:20:32 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ void	sort_outlier(t_data *data, int outlier)
 	if (distance_to_top_pile(outlier, data->pile_b) == UP)
 	{
 		while (data->pile_b->num != outlier)
-			rab(&(data->pile_b), BRAVO);
+			rab(&(data->pile_b), BRAVO, data);
 	}
 	else
 	{
 		while (data->pile_b->num != outlier)
-			rrab(&(data->pile_b), BRAVO);
+			rrab(&(data->pile_b), BRAVO, data);
 	}
-	pa(&(data->pile_a), &(data->pile_b));
+	pa(&(data->pile_a), &(data->pile_b), data);
 }
 
 void	sort_pile_bravo(t_data *data)
@@ -59,7 +59,7 @@ void	sort_pile_bravo(t_data *data)
 			return ;
 		sort_outlier(data, outliers[1]);
 		sort_outlier(data, outliers[0]);
-		rab(&(data->pile_a), ALPHA);
+		rab(&(data->pile_a), ALPHA, data);
 		data->transfer++;
 		free(outliers);
 	}
@@ -69,7 +69,7 @@ void	sort_pile_alpha(t_data *data)
 {
 	while (data->transfer > 0)
 	{
-		rab(&(data->pile_a), ALPHA);
+		rab(&(data->pile_a), ALPHA, data);
 		data->transfer--;
 	}
 }
