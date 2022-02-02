@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:36:08 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/28 11:25:00 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:00:03 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,33 @@ int	distance_to_top_pile(int value, t_stack *pile)
 		return (UP);
 	else
 		return (DOWN);
+}
+
+void	push_to_top_pile(t_data *data, int num, int pile_id)
+{
+	if (pile_id == ALPHA && distance_to_top_pile(num, data->pile_a) == UP)
+	{
+		while (data->pile_a->num != num)
+			rab(&(data->pile_a), ALPHA, data);
+	}
+	else if (pile_id == ALPHA
+		 && distance_to_top_pile(num, data->pile_a) == DOWN)
+	{
+		while (data->pile_a->num != num)
+			rrab(&(data->pile_a), ALPHA, data);
+	}
+	else if (pile_id == BRAVO
+		 && distance_to_top_pile(num, data->pile_b) == UP)
+	{
+		while (data->pile_b->num != num)
+			rab(&(data->pile_b), BRAVO, data);
+	}
+	else if (pile_id == BRAVO
+		 && distance_to_top_pile(num, data->pile_b) == DOWN)
+	{
+		while (data->pile_b->num != num)
+			rrab(&(data->pile_b), BRAVO, data);
+	}
 }
 
 int	distance_from_sorted_pos(int value, t_stack *pile)

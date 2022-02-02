@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:21:25 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/31 16:33:21 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/01 21:23:49 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	*find_outliers(t_stack *pile)
 {
 	int			*int_arr;
 
+	if (!pile)
+		return (NULL);
 	int_arr = (int *)malloc(sizeof(int) * 2);
 	if (!int_arr)
 		return (NULL);

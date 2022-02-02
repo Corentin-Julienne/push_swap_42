@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/01 16:51:26 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/02 12:58:46 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_data
 	int				transfer;
 	int				ajust;
 	int				counter;
+	void			**storage;
 	struct s_stack	*pile_a;
 	struct s_stack	*pile_b;
 }					t_data;
@@ -112,6 +113,7 @@ void		quicksort(int *nums, int begin, int end);
 
 int			calc_pile_size(t_stack *pile);
 int			distance_to_top_pile(int value, t_stack *pile);
+void		push_to_top_pile(t_data *data, int num, int pile_id);
 int			distance_from_sorted_pos(int value, t_stack *pile);
 t_stack		*create_pile_a(int *nums, int arnb);
 
