@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 12:01:15 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/01 12:16:05 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/03 17:23:16 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,19 @@ Do nothing if a is empty.
 
 */
 
-int	sab(t_stack **pile, int	a_or_b, t_data *data) // functionnal
+int	sab(t_stack **pile, int	a_or_b, t_data *data)
 {	
-	int		tmp;
+	int		tmp_num;
+	int		tmp_pos;
 
 	if (!*pile || !(*pile)->next)
 		return (-1);
-	tmp = (*pile)->num;
+	tmp_num = (*pile)->num;
 	(*pile)->num = (*pile)->next->num;
-	(*pile)->next->num = tmp;
+	(*pile)->next->num = tmp_num;
+	tmp_pos = (*pile)->sorted_pos;
+	(*pile)->sorted_pos = (*pile)->next->sorted_pos;
+	(*pile)->next->sorted_pos = tmp_pos;
 	if (a_or_b == ALPHA)
 		write(STDOUT_FILENO, "sa\n", 3);
 	else if (a_or_b == BRAVO)
@@ -48,7 +52,7 @@ int	sab(t_stack **pile, int	a_or_b, t_data *data) // functionnal
 	return (0);
 }
 
-int	ss(t_stack **pile_a, t_stack **pile_b, t_data *data) // functionnal
+int	ss(t_stack **pile_a, t_stack **pile_b, t_data *data)
 {
 	int		res_a;
 	int		res_b;
@@ -65,15 +69,18 @@ int	ss(t_stack **pile_a, t_stack **pile_b, t_data *data) // functionnal
 	return (0);
 }
 
-int	pa(t_stack **pile_a, t_stack **pile_b, t_data *data) // functionnal
+int	pa(t_stack **pile_a, t_stack **pile_b, t_data *data)
 {
 	t_stack		*tmp;
 	t_stack		*tmp_2;
+	int			tmp_pos;
 
 	if (*pile_b == NULL)
 		return (-1);
+	tmp_pos = (*pile_b)->sorted_pos;
 	tmp = stack_new((*pile_b)->num);
 	stack_add_front(pile_a, tmp);
+	(*pile_a)->sorted_pos = tmp_pos;
 	if (!(*pile_b)->next)
 		stack_delone(pile_b);
 	else
@@ -88,15 +95,18 @@ int	pa(t_stack **pile_a, t_stack **pile_b, t_data *data) // functionnal
 	return (0);
 }
 
-int	pb(t_stack **pile_a, t_stack **pile_b, t_data *data) // functionnal
+int	pb(t_stack **pile_a, t_stack **pile_b, t_data *data)
 {
 	t_stack		*tmp;
 	t_stack		*tmp_2;
+	int			tmp_pos;
 
 	if (!*pile_a)
 		return (-1);
+	tmp_pos = (*pile_a)->sorted_pos;
 	tmp = stack_new((*pile_a)->num);
 	stack_add_front(pile_b, tmp);
+	(*pile_b)->sorted_pos = tmp_pos;
 	if (!(*pile_a)->next)
 		stack_delone(pile_a);
 	else

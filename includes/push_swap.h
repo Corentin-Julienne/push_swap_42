@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/02 12:58:46 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/03 20:31:38 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ typedef struct s_stack
 
 /* ALGOS */
 
+/* algos big num */
+void		algo_big_nums(t_data *data);
+int			find_good_pos(t_data *data);
+int			organize_pile_b(t_data *data);
+void		empty_pile_bravo(t_data *data);
 /*algo_case_2.c*/
 void		algo_case_two_nums(t_data *data);
 /* algo_case_3.c */
@@ -62,9 +67,6 @@ void		algo_case_three_nums(t_data *data, int *nums);
 void		algo_case_four_nums(t_data *data);
 /* algo_case_5.c*/
 void		algo_case_five_nums(t_data *data);
-/*algo_case_100.c*/
-void		algo_case_6_inf_nums(t_data *data);
-int			move_chunk_to_b(t_data *data, int chunk);
 
 /* ACTIONS */
 
@@ -94,6 +96,10 @@ int			*check_args_are_valid(char **input, t_data *data);
 /* debug_utils.c */
 
 void		display_pile(t_stack *pile_a, t_stack *pile_b);
+void		display_input(char **input);
+void		display_nums(t_data *data, int *nums);
+void		display_sorted_positions(t_stack *pile);
+void		handle_verifs(t_data *data);
 
 /* decision_tree.c*/
 

@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 18:10:08 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/02 11:39:11 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/03 20:17:59 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	add_sorted_positions(t_data *data, t_stack *pile_a)
 	i = 0;
 	while (pile_a)
 	{
-		while (nums[i] < data->stack_size)
+		while (i < data->stack_size)
 		{
-			if (nums[i] == pile_a->next)
+			if (nums[i] == pile_a->num)
 			{
 				pile_a->sorted_pos = i;
 				break ;
@@ -42,6 +42,7 @@ int	add_sorted_positions(t_data *data, t_stack *pile_a)
 int	decision_tree(t_data *data, int arr_len)
 {
 	data->counter = 0;
+	
 	if (add_sorted_positions(data, data->pile_a) == -1)
 		return (-1);
 	if (arr_len == 2)
@@ -53,6 +54,6 @@ int	decision_tree(t_data *data, int arr_len)
 	else if (arr_len == 5)
 		algo_case_five_nums(data);
 	else if (arr_len >= 6)
-		algo_case_6_inf_nums(data);
+		algo_big_nums(data);
 	return (0);
 }
