@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:41:38 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/03 20:31:25 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/04 09:37:24 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,3 +87,4 @@ void	handle_verifs(t_data *data)
 		pile_a = pile_a->next;
 	}
 }
+

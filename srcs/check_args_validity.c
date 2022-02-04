@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:26:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/01 14:56:18 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/04 10:14:58 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,11 @@ static int	check_int_limits(const char *ptn, int sign)
 {
 	char				*str;
 	unsigned long long	res;
+	long long			res_with_sign;
 
 	str = (char *)ptn;
 	res = 0;
-	if (ft_strlen(str) > 19)
+	if (ft_strlen(str) > 10)
 		return (1);
 	while (str[0])
 	{
@@ -72,9 +73,8 @@ static int	check_int_limits(const char *ptn, int sign)
 			break ;
 		str++;
 	}
-	if (res >= 9223372036854775808ULL && sign == 1)
-		return (1);
-	if (res >= 9223372036854775808ULL && sign == (-1))
+	res_with_sign = sign * res;
+	if (res_with_sign > INT_MAX || res_with_sign < INT_MIN)
 		return (1);
 	return (0);
 }

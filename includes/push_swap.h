@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/03 20:31:38 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/02/04 10:17:38 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <limits.h>
 
 # define 	ALPHA		1
 # define 	BRAVO		2
@@ -32,14 +33,9 @@
 typedef struct s_data
 {
 	int				i;
-	int				j;
 	int				*nums;
 	int				stack_size;
-	int				chunk_num;
-	int				transfer;
-	int				ajust;
 	int				counter;
-	void			**storage;
 	struct s_stack	*pile_a;
 	struct s_stack	*pile_b;
 }					t_data;
