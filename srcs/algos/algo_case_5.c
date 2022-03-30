@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 15:41:57 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/30 17:08:06 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/30 18:05:23 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,33 +24,16 @@ static int	is_within_interval(t_stack *pile_b, int *nums, int num_size)
 	return (1);
 }
 
-/*  */
+/* rotate pile A until data->pile_b inf to data->pile->a,
+then push push data->pile_b to data->pile_a,
+then use sort_param_top_b to  */
 
 static void	handle_within_interval(t_data *data, int *nums, int num_len)
 {
-	while (data->pile_b->num > data->pile_a->num)
+	while (data->pile_b->num > data->pile_a->num) // mistake there ?
 		rab(&(data->pile_a), ALPHA, data);
 	pa(&(data->pile_a), &(data->pile_b), data);
-	while (42)
-	{
-		free(nums);
-		nums = pile_to_int_arr(data->pile_a);
-		if (!nums)
-			return ;
-		if (check_if_already_sorted(nums, num_len) == 0)
-		{
-			if (distance_from_sorted_pos(data->pile_a->num, data->pile_a)
-				 == CLOCK)
-				rab(&(data->pile_a), ALPHA, data);
-			else
-				rrab(&(data->pile_a), ALPHA, data);
-		}	
-		else
-		{
-			free(nums);
-			break ;
-		}
-	}
+	sort_param_top_b(data, nums, num_len);
 }
 
 /* when outside interval, push num at the top of pile B to top of pile A,

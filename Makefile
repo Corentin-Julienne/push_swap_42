@@ -6,7 +6,7 @@
 #    By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/06 16:06:37 by cjulienn          #+#    #+#              #
-#    Updated: 2022/03/30 16:35:05 by cjulienn         ###   ########.fr        #
+#    Updated: 2022/03/30 17:57:43 by cjulienn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS= ./srcs/algos/algo_big_nbrs/algo_big_nbrs_1.c \
 	  ./srcs/algos/algo_case_3.c \
 	  ./srcs/algos/algo_case_4.c \
 	  ./srcs/algos/algo_case_5.c \
+	  ./srcs/algos/common_funcs.c \
 	  ./srcs/actions_1.c \
 	  ./srcs/actions_2.c \
 	  ./srcs/algo_utils.c \

@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 12:01:15 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/03 17:23:16 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/30 18:52:37 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int	sab(t_stack **pile, int	a_or_b, t_data *data)
 	(*pile)->sorted_pos = (*pile)->next->sorted_pos;
 	(*pile)->next->sorted_pos = tmp_pos;
 	if (a_or_b == ALPHA)
-		write(STDOUT_FILENO, "sa\n", 3);
+		msg_writer(STDOUT_FILENO, "sa\n", data);
 	else if (a_or_b == BRAVO)
-		write(STDOUT_FILENO, "sb\n", 3);
-	if (data != NULL)
+		msg_writer(STDOUT_FILENO, "sb\n", data);
+	if (a_or_b == ALPHA || a_or_b == BRAVO)
 		data->counter++;
 	return (0);
 }
@@ -57,15 +57,14 @@ int	ss(t_stack **pile_a, t_stack **pile_b, t_data *data)
 	int		res_a;
 	int		res_b;
 
-	res_a = sab(pile_a, ALPHA, NULL);
+	res_a = sab(pile_a, COMBINED, data);
 	if (res_a != 0)
 		return (-1);
-	res_b = sab(pile_b, BRAVO, NULL);
+	res_b = sab(pile_b, COMBINED, data);
 	if (res_b != 0)
 		return (-1);
-	write(STDOUT_FILENO, "ss\n", 3);
-	if (data != NULL)
-		data->counter++;
+	msg_writer(STDOUT_FILENO, "ss\n", data);
+	data->counter++;
 	return (0);
 }
 
@@ -89,9 +88,8 @@ int	pa(t_stack **pile_a, t_stack **pile_b, t_data *data)
 		stack_delone(pile_b);
 		*pile_b = tmp_2;
 	}
-	write(STDOUT_FILENO, "pa\n", 3);
-	if (data != NULL)
-		data->counter++;
+	msg_writer(STDOUT_FILENO, "pa\n", data);
+	data->counter++;
 	return (0);
 }
 
@@ -115,8 +113,7 @@ int	pb(t_stack **pile_a, t_stack **pile_b, t_data *data)
 		stack_delone(pile_a);
 		*pile_a = tmp_2;
 	}
-	write(STDOUT_FILENO, "pb\n", 3);
-	if (data != NULL)
-		data->counter++;
+	msg_writer(STDOUT_FILENO, "pb\n", data);
+	data->counter++;
 	return (0);
 }

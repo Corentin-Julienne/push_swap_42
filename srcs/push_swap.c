@@ -6,23 +6,16 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:55:29 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/30 16:11:07 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/30 18:16:46 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/* free data struct if allocated, then print Error\n and exit with EXIT_FAILURE */
-
-void	error_and_exit(t_data *data)
+void	msg_writer(int fildes, char *msg, t_data *data)
 {
-	char	*err_msg;
-
-	if (data != NULL)
-		free(data);
-	err_msg = "Error\n";
-	write(STDERR_FILENO, err_msg, ft_strlen(err_msg));
-	exit(EXIT_FAILURE);
+	if (write(fildes, msg, ft_strlen(msg)) == -1)
+		free_stacks_and_exit(data);
 }
 
 /* => format input verify if the input is correct */

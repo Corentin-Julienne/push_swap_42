@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/30 16:54:52 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/30 18:42:49 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void		algo_case_three_nums(t_data *data, int *nums);
 void		algo_case_four_nums(t_data *data);
 /* algo_case_5.c*/
 void		algo_case_five_nums(t_data *data);
+/* common_funcs.c */
+void		sort_param_top_b(t_data *data, int *nums, int num_len);
 
 /* ACTIONS */
 
@@ -112,6 +114,7 @@ char		**format_input(int argc, char **argv, t_data *data);
 
 /* free.c */
 
+void		error_and_exit(t_data *data);
 void		free_stacks_and_exit(t_data *data);
 
 /* quicksort.c */
@@ -134,7 +137,7 @@ int			*find_outliers(t_stack *pile);
 
 /* push_swap.c */
 
-void		error_and_exit(t_data *data);
+void		msg_writer(int fildes, char *msg, t_data *data);
 
 /* STACK UTILS */
 

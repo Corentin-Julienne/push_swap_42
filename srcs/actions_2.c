@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 12:01:17 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/03 17:38:28 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/30 18:43:04 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ rr : ra and rb at the same time.
 static int	rotate_feedback(int	direction, int a_or_b, t_data *data)
 {
 	if (a_or_b == ALPHA && direction == REVERSE)
-		write(STDOUT_FILENO, "rra\n", 4);
+		msg_writer(STDOUT_FILENO, "rra\n", data);
 	else if (a_or_b == BRAVO && direction == REVERSE)
-		write(STDOUT_FILENO, "rrb\n", 4);
+		msg_writer(STDOUT_FILENO, "rrb\n", data);
 	else if (a_or_b == ALPHA && direction == CLOCK)
-		write(STDOUT_FILENO, "ra\n", 3);
+		msg_writer(STDOUT_FILENO, "ra\n", data);
 	else if (a_or_b == BRAVO && direction == CLOCK)
-		write(STDOUT_FILENO, "rb\n", 3);
-	if (data != NULL)
+		msg_writer(STDOUT_FILENO, "rb\n", data);
+	if (a_or_b == ALPHA || a_or_b == BRAVO)
 		data->counter++;
 	return (0);
 }
@@ -77,15 +77,14 @@ int	rrr(t_stack **pile_a, t_stack **pile_b, t_data *data)
 	int		res_ra;
 	int		res_rb;
 
-	res_ra = rrab(pile_a, COMBINED, NULL);
+	res_ra = rrab(pile_a, COMBINED, data);
 	if (res_ra != 0)
 		return (-1);
-	res_rb = rrab(pile_b, COMBINED, NULL);
+	res_rb = rrab(pile_b, COMBINED, data);
 	if (res_rb != 0)
 		return (-1);
-	write(STDOUT_FILENO, "rrr\n", 4);
-	if (data != NULL)
-		data->counter++;
+	msg_writer(STDOUT_FILENO, "rrr\n", data);
+	data->counter++;
 	return (0);
 }
 
@@ -117,14 +116,13 @@ int	rr(t_stack **pile_a, t_stack **pile_b, t_data *data)
 	int		res_ra;
 	int		res_rb;
 
-	res_ra = rab(pile_a, COMBINED, NULL);
+	res_ra = rab(pile_a, COMBINED, data);
 	if (res_ra != 0)
 		return (-1);
-	res_rb = rab(pile_b, COMBINED, NULL);
+	res_rb = rab(pile_b, COMBINED, data);
 	if (res_rb != 0)
 		return (-1);
-	write(STDOUT_FILENO, "rr\n", 3);
-	if (data != NULL)
-		data->counter++;
+	msg_writer(STDOUT_FILENO, "rr\n", data);
+	data->counter++;
 	return (0);
 }

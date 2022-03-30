@@ -6,11 +6,24 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 16:29:30 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/30 16:34:25 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/30 18:09:15 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/* free data struct if allocated, then print Error\n and exit with EXIT_FAILURE */
+
+void	error_and_exit(t_data *data)
+{
+	char	*err_msg;
+
+	if (data != NULL)
+		free(data);
+	err_msg = "Error\n";
+	write(STDERR_FILENO, err_msg, ft_strlen(err_msg));
+	exit(EXIT_FAILURE);
+}
 
 /* when using algos, use it if malloc errors in code to free everything
 and exit with an error message
