@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:54:58 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/01 12:20:32 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/30 17:16:46 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	sort_outlier(t_data *data, int outlier)
 	pa(&(data->pile_a), &(data->pile_b), data);
 }
 
-void	sort_pile_bravo(t_data *data)
+void	sort_pile_bravo(t_data *data) // bugged, probably not useful
 {
 	int		*outliers;
 
@@ -65,7 +65,7 @@ void	sort_pile_bravo(t_data *data)
 	}
 }
 
-void	sort_pile_alpha(t_data *data)
+void	sort_pile_alpha(t_data *data) // bugged, probably not useful
 {
 	while (data->transfer > 0)
 	{

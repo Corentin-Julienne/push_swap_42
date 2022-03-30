@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:36:08 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/02 13:00:03 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/30 15:39:09 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,10 @@ int	distance_from_sorted_pos(int value, t_stack *pile)
 		return (REVERSE);
 }
 
-t_stack	*create_pile_a(int *nums, int arnb)
+/* create the pile ALPHA using the stack utils functions 
+return NULL in case of any malloc failure */
+
+t_stack	*create_pile_a(int *nums, int size_of_stack)
 {
 	t_stack		*pile;
 	t_stack		*new;
@@ -99,7 +102,7 @@ t_stack	*create_pile_a(int *nums, int arnb)
 	if (!pile)
 		return (NULL);
 	i = 1;
-	while (i < arnb)
+	while (i < size_of_stack)
 	{
 		new = stack_new(nums[i]);
 		if (!new)

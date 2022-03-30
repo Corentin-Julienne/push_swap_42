@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/04 10:17:38 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/30 16:54:52 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,15 @@ void		sort_outlier(t_data *data, int outlier);
 void		sort_pile_bravo(t_data *data);
 void		sort_pile_alpha(t_data *data);
 
-/* check args validity */
+/* check_args_validity_1.c */
 
-int			check_if_already_sorted(int *nums, int nbr_c);
 int			*check_args_are_valid(char **input, t_data *data);
+
+/* check_args_validity_2.c */
+
+int			check_if_already_sorted(int *nums, int stack_size);
+int			check_if_duplicates(int	*nums, int stack_size);
+int			is_int_compatible(const char *str);
 
 /* debug_utils.c */
 
@@ -104,6 +109,10 @@ int			decision_tree(t_data *data, int arr_len);
 /* format_input.c */
 
 char		**format_input(int argc, char **argv, t_data *data);
+
+/* free.c */
+
+void		free_stacks_and_exit(t_data *data);
 
 /* quicksort.c */
 
@@ -122,6 +131,10 @@ t_stack		*create_pile_a(int *nums, int arnb);
 /* outliers.c */
 
 int			*find_outliers(t_stack *pile);
+
+/* push_swap.c */
+
+void		error_and_exit(t_data *data);
 
 /* STACK UTILS */
 

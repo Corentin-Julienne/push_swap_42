@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args_validity.c                              :+:      :+:    :+:   */
+/*   check_args_validity_2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:26:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/04 10:14:58 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/30 16:53:43 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	check_if_already_sorted(int *nums_input, int nbr_c)
+/* compare the arr to a quiksorted copy of this arr. Check if they are equals
+return 0 if they are different, 1 arr already sorted,
+and -1 in case of malloc error */
+
+int	check_if_already_sorted(int *nums_input, int stack_size)
 {
 	int	*nums_dupl;
 
-	nums_dupl = int_arr_dup(nums_input, nbr_c);
+	nums_dupl = int_arr_dup(nums_input, stack_size);
 	if (!nums_dupl)
 		return (-1);
-	quicksort(nums_dupl, 0, nbr_c - 1);
-	if (are_arr_equals(nums_input, nums_dupl, nbr_c) == 1)
+	quicksort(nums_dupl, 0, stack_size - 1);
+	if (are_arr_equals(nums_input, nums_dupl, stack_size) == 1)
 	{
 		free(nums_dupl);
 		return (1);
@@ -29,7 +33,9 @@ int	check_if_already_sorted(int *nums_input, int nbr_c)
 	return (0);
 }
 
-static int	check_if_duplicates(int	*nums, int nbr_c)
+/* check every int within int arr has no duplicates */
+
+int	check_if_duplicates(int	*nums, int stack_size)
 {
 	int		i;
 	int		j;
@@ -38,9 +44,9 @@ static int	check_if_duplicates(int	*nums, int nbr_c)
 	i = 0;
 	j = 0;
 	errors = 0;
-	while (j < nbr_c)
+	while (j < stack_size)
 	{
-		while (i < nbr_c)
+		while (i < stack_size)
 		{
 			if (nums[j] == nums[i] && j != i)
 				errors++;
@@ -49,11 +55,13 @@ static int	check_if_duplicates(int	*nums, int nbr_c)
 		j++;
 		i = 0;
 	}
-	if (errors)
+	if (errors > 0)
 		return (1);
-	errors += check_if_already_sorted(nums, nbr_c);
+	errors += check_if_already_sorted(nums, stack_size);
 	return (errors);
 }
+
+/* check if every int is within int range */
 
 static int	check_int_limits(const char *ptn, int sign)
 {
@@ -79,7 +87,9 @@ static int	check_int_limits(const char *ptn, int sign)
 	return (0);
 }
 
-static int	is_int_compatible(const char *str)
+/* check if is a number (verify if within int range in the next function) */
+
+int	is_int_compatible(const char *str)
 {
 	char	*ptn;
 	int		i;
@@ -100,33 +110,4 @@ static int	is_int_compatible(const char *str)
 		i++;
 	}
 	return (check_int_limits(ptn, sign));
-}
-
-int	*check_args_are_valid(char **input, t_data *data)
-{
-	int		*nums;
-	int		errors;
-
-	data->i = 0;
-	errors = 0;
-	while (data->i < data->stack_size)
-		errors += is_int_compatible(input[data->i++]);
-	if (errors)
-		return (NULL);
-	nums = (int *)malloc(sizeof(int) * (data->stack_size));
-	if (!nums)
-		return (NULL);
-	data->i = 0;
-	while (data->i < data->stack_size)
-	{
-		nums[data->i] = ft_atoi(input[data->i]);
-		data->i++;
-	}	
-	errors = check_if_duplicates(nums, data->stack_size);
-	if (errors)
-	{
-		free(nums);
-		return (NULL);
-	}
-	return (nums);
 }

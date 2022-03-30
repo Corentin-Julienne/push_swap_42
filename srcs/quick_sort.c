@@ -6,11 +6,13 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:51:25 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/01/27 12:00:51 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/30 16:08:10 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/* an strdup-like function for int arrays */
 
 int	*int_arr_dup(int *to_cpy, int arr_size)
 {
@@ -28,6 +30,8 @@ int	*int_arr_dup(int *to_cpy, int arr_size)
 	}
 	return (dup);
 }
+
+/* return 1 if arr equals, 0 if not */
 
 int	are_arr_equals(int *arr_a, int *arr_b, int arr_size)
 {
@@ -77,6 +81,10 @@ static int	partition(int *nums, int begin, int end)
 	ft_swap(&nums[i + 1], &nums[end]);
 	return (i + 1);
 }
+
+/* implement a quicksort in order to check if arr is sorted or not
+by comparing a quicksorted copy and the original
+(using are_arr_equals function) */
 
 void	quicksort(int *nums, int begin, int end)
 {

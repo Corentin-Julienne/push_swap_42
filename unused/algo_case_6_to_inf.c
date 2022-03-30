@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 15:41:53 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/01 12:19:26 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/28 19:41:59 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,19 @@
 
 Algo description :
 
-Step 1: Find the corresponding borders to split my stack into X parts, equal in size if even number,
-if not, the last chunk will add 1 more in size.
+Step 1: Find the corresponding borders to split my stack into X parts,
+equal in size if even number,if not, the last chunk will add 1 more in size.
 Step 2: push the first chunk to stack B
 Step 3: search for the biggest and the smallest number in stack B
 Step 4: rotate the biggest number to the top of stack B and push it to stack A
-Step 5: rotate the smallest number to the top of stack B, push it to stack A and rotate it to the bottom
+Step 5: rotate the smallest number to the top of stack B, push it to stack A 
+and rotate it to the bottom
 Step 6: repeat steps 4 and 5 until stack B is empty
-Step 7: rotate all my sorted numbers from the top of stack A to the bottom of stack A
+Step 7: rotate all my sorted numbers from the top of stack A
+to the bottom of stack A
 Step 8: repeat steps 2 to 7 for the remaining quarters
-Step 9: have your numbers sorted by ascending order in stack A, with the smallest number on top of your Stack
+Step 9: have your numbers sorted by ascending order in stack A,
+with the smallest number on top of your Stack
 
 */
 

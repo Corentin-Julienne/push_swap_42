@@ -6,11 +6,13 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 15:29:26 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/01 12:17:36 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/30 16:23:50 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+/* simple algo for three nums in the stack */
 
 void	algo_case_three_nums(t_data *data, int *nums)
 {	

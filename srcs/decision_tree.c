@@ -6,13 +6,13 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 18:10:08 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/03 20:17:59 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/30 16:13:04 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	add_sorted_positions(t_data *data, t_stack *pile_a)
+int	add_sorted_positions(t_data *data, t_stack *pile_a) // I dont remember what is this about :(
 {
 	int		*nums;
 	int		i;
@@ -43,7 +43,7 @@ int	decision_tree(t_data *data, int arr_len)
 {
 	data->counter = 0;
 	
-	if (add_sorted_positions(data, data->pile_a) == -1)
+	if (add_sorted_positions(data, data->pile_a) == -1) // problem here
 		return (-1);
 	if (arr_len == 2)
 		algo_case_two_nums(data);
