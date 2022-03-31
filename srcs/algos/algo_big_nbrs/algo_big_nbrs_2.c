@@ -6,11 +6,37 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 18:56:01 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/03 20:14:28 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 14:07:12 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/push_swap.h"
+
+void	add_sorted_positions(t_data *data, t_stack *pile_a) // OK
+{
+	int		*nums;
+	int		i;
+
+	nums = pile_to_int_arr(data->pile_a);
+	if (!nums)
+		free_stacks_and_exit(data);
+	quicksort(nums, 0, data->stack_size - 1);
+	i = 0;
+	while (pile_a)
+	{
+		while (i < data->stack_size)
+		{
+			if (nums[i] == pile_a->num)
+			{
+				pile_a->sorted_pos = i;
+				break ;
+			}
+			i++;
+		}
+		i = 0;
+		pile_a = pile_a->next;
+	}
+}
 
 static int handle_case_outlier(t_data *data, int num)
 {

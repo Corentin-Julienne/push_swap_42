@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 15:41:57 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/30 18:05:23 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 13:18:18 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,20 @@ the apply different func to handle both cases. Repeat for second number*/
 static void	handle_pile_bravo(t_data *data)
 {
 	int		*nums;
+	int		i;
 
-	nums = pile_to_int_arr(data->pile_a);
-	if (!nums)
-		free_stacks_and_exit(data);
-	if (is_within_interval(data->pile_b, nums, 3) == 0)
-		handle_outside_interval(data, nums);
-	else
-		handle_within_interval(data, nums, 4);
-	nums = pile_to_int_arr(data->pile_a);
-	if (!nums)
-		free_stacks_and_exit(data);
-	if (is_within_interval(data->pile_b, nums, 4) == 0)
-		handle_outside_interval(data, nums);
-	else
-		handle_within_interval(data, nums, 5);
+	i = 0;
+	while (i < 2)
+	{
+		nums = pile_to_int_arr(data->pile_a);
+		if (!nums)
+			free_stacks_and_exit(data);
+		if (is_within_interval(data->pile_b, nums, i + 3) == 0)
+			handle_outside_interval(data, nums);
+		else
+			handle_within_interval(data, nums, i + 4);
+		i++;
+	}
 }
 
 /* this algo push the first two nums on pile B, then apply algo for three nums on pile A

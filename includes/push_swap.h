@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/30 18:42:49 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 14:07:52 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_stack
 
 /* algos big num */
 void		algo_big_nums(t_data *data);
+void		add_sorted_positions(t_data *data, t_stack *pile_a);
 int			find_good_pos(t_data *data);
 int			organize_pile_b(t_data *data);
 void		empty_pile_bravo(t_data *data);
@@ -104,10 +105,6 @@ void		display_nums(t_data *data, int *nums);
 void		display_sorted_positions(t_stack *pile);
 void		handle_verifs(t_data *data);
 
-/* decision_tree.c*/
-
-int			decision_tree(t_data *data, int arr_len);
-
 /* format_input.c */
 
 char		**format_input(int argc, char **argv, t_data *data);
@@ -137,6 +134,7 @@ int			*find_outliers(t_stack *pile);
 
 /* push_swap.c */
 
+int			decision_tree(t_data *data, int arr_len);
 void		msg_writer(int fildes, char *msg, t_data *data);
 
 /* STACK UTILS */

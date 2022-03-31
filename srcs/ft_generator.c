@@ -6,9 +6,11 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 22:43:57 by user42            #+#    #+#             */
-/*   Updated: 2022/02/01 12:25:20 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 13:10:53 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/* NOT MY CODE : COURTESY OF GROUBAUD | FOR TESTING PURPOSES ONLY */
 
 #include <stdlib.h>
 #include <stdio.h>

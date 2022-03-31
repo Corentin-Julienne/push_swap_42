@@ -6,11 +6,14 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 13:28:54 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/02 19:03:31 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 12:57:03 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/* set of functions used to perform basic operations in order to
+modify the piles a and b */
 
 t_stack	*stack_last(t_stack *stack)
 {

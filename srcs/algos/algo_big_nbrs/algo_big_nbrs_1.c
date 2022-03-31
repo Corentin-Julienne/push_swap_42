@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:33:46 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/03 20:17:32 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 14:08:22 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ This algorithm works in multiple steps :
 
 */
 
-static int	rtn_number(int dist_up, int dist_down, t_stack *up, t_stack *down) // seems functionnal
+/* simply returns the number which is closest to top of pile A */
+
+static int	rtn_number(int dist_up, int dist_down, t_stack *up, t_stack *down)
 {
 	if (dist_up < dist_down)
 		return (up->num);
@@ -26,7 +28,10 @@ static int	rtn_number(int dist_up, int dist_down, t_stack *up, t_stack *down) //
 		return (down->num);
 }
 
-static int	scan_number(t_data *data, int index, int chunk) // seems functionnal
+/* scan number returns the first number from the index which pertains
+to the chunk and which is the closest from the top of pile a */
+
+static int	scan_number(t_data *data, int index_start, int index_end)
 {
 	t_stack		*up;
 	t_stack		*down;
@@ -39,14 +44,14 @@ static int	scan_number(t_data *data, int index, int chunk) // seems functionnal
 	dist_down = 0;
 	while (up)
 	{
-		if (up->sorted_pos >= index && up->sorted_pos < chunk)
+		if (up->sorted_pos >= index_start && up->sorted_pos <= index_end)
 			break ;
 		dist_up++;
 		up = up->next;
 	}
 	while (down)
 	{
-		if (down->sorted_pos >= index && down->sorted_pos < chunk)
+		if (down->sorted_pos >= index_start && down->sorted_pos <= index_end)
 			break ;
 		dist_down++;
 		down = down->prev;
@@ -54,20 +59,27 @@ static int	scan_number(t_data *data, int index, int chunk) // seems functionnal
 	return (rtn_number(dist_up, dist_down, up, down));
 }
 
-static void	process_chunk(t_data *data, int num_treated, int index, int chunk)
+/*  */
+
+static void	process_chunk(t_data *data, int chunk_len,
+	 int index_start, int index_end)
 {	
 	int		num_to_push_up;
 	
-	while (num_treated > 0)
+	while (chunk_len > 0)
 	{
-		num_to_push_up = scan_number(data, index, chunk);
+		num_to_push_up = scan_number(data, index_start, index_end);
 		push_to_top_pile(data, num_to_push_up, ALPHA);
 		organize_pile_b(data);
-		num_treated--;
+		chunk_len--;
 	}
 }
 
-static int	calc_chunk_num(t_data *data) // seems ok
+/* for big numbers ( > 5), we won't use the same numbers of reps
+to sort pile A. So calc:chunk_num return the num of reps,
+depending of the size of pile A */
+
+static int	calc_chunk_num(t_data *data)
 {
 	if (data->stack_size == 100)
 		return (5);
@@ -77,24 +89,29 @@ static int	calc_chunk_num(t_data *data) // seems ok
 		return (4); // change this
 }
 
+/* used for big nums ( > 5)
+reps is the number of repetitions of the loop
+chunk len is the size of every chunk 
+index_start and index_end are the indexes of first and last index 
+of a given chunk */
+
 void	algo_big_nums(t_data *data)
 {
 	int		reps;
+	int		index_start;
+	int		index_end;
 	int		chunk_len;
-	int		chunk;
-	int		index;
-	int		num_treated;
-	
+
+	add_sorted_positions(data, data->pile_a);
 	reps = calc_chunk_num(data);
-	index = 0;
-	chunk_len = data->stack_size / reps;
-	chunk = chunk_len;
-	num_treated =  chunk_len;
+	index_start = 0;
+	chunk_len = data->stack_size / reps; // works for even numbers only
+	index_end = chunk_len - 1;
 	while (reps > 0)
 	{
-		process_chunk(data, num_treated, index, chunk);
-		index += chunk_len;
-		chunk += chunk_len;
+		process_chunk(data, chunk_len, index_start, index_end);
+		index_start += chunk_len;
+		index_end += chunk_len;
 		reps--;
 	}
 	empty_pile_bravo(data);

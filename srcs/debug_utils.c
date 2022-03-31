@@ -6,13 +6,13 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:41:38 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/02/04 09:37:24 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 13:11:35 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/* debugging function : not to push for correction */
+/* debugging function : NOT TO PUSH FOR CORRECTION */
 
 void	display_pile(t_stack *pile_a, t_stack *pile_b)
 {

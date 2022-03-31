@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 12:01:17 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/30 18:43:04 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 13:04:43 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ rr : ra and rb at the same time.
 
 */
 
-static int	rotate_feedback(int	direction, int a_or_b, t_data *data)
+static int	rotate_feedback(int	direction, int a_or_b, t_data *data) // OK
 {
 	if (a_or_b == ALPHA && direction == REVERSE)
 		msg_writer(STDOUT_FILENO, "rra\n", data);
@@ -47,7 +47,7 @@ static int	rotate_feedback(int	direction, int a_or_b, t_data *data)
 	return (0);
 }
 
-int	rrab(t_stack **stack, int a_or_b, t_data *data)
+int	rrab(t_stack **stack, int a_or_b, t_data *data) // OK
 {
 	t_stack		*last_elem;
 	t_stack		*first;
@@ -55,7 +55,7 @@ int	rrab(t_stack **stack, int a_or_b, t_data *data)
 	int			pos_tmp;
 
 	if (!*stack || !(*stack)->next)
-		return (-1);
+		return (1);
 	last_elem = *stack;
 	last_elem = stack_last(last_elem);
 	num_tmp = last_elem->num;
@@ -66,29 +66,26 @@ int	rrab(t_stack **stack, int a_or_b, t_data *data)
 	last_elem->next = NULL;
 	first = stack_new(num_tmp);
 	if (!first)
-		return (-1);
+		free_stacks_and_exit(data);
 	stack_add_front(stack, first);
 	(*stack)->sorted_pos = pos_tmp;
 	return (rotate_feedback(REVERSE, a_or_b, data));
 }
 
-int	rrr(t_stack **pile_a, t_stack **pile_b, t_data *data)
+int	rrr(t_stack **pile_a, t_stack **pile_b, t_data *data) // OK
 {
 	int		res_ra;
 	int		res_rb;
 
 	res_ra = rrab(pile_a, COMBINED, data);
-	if (res_ra != 0)
-		return (-1);
 	res_rb = rrab(pile_b, COMBINED, data);
-	if (res_rb != 0)
-		return (-1);
-	msg_writer(STDOUT_FILENO, "rrr\n", data);
+	if (!res_ra || !res_rb)
+		msg_writer(STDOUT_FILENO, "rrr\n", data);
 	data->counter++;
 	return (0);
 }
 
-int	rab(t_stack **stack, int a_or_b, t_data *data)
+int	rab(t_stack **stack, int a_or_b, t_data *data) // OK
 {
 	int			num_tmp;
 	int			pos_tmp;
@@ -96,12 +93,12 @@ int	rab(t_stack **stack, int a_or_b, t_data *data)
 	t_stack		*tmp;
 
 	if (!*stack || !(*stack)->next)
-		return (-1);
+		return (1);
 	num_tmp = (*stack)->num;
 	pos_tmp = (*stack)->sorted_pos;
 	new = stack_new(num_tmp);
 	if (!new)
-		return (-1);
+		free_stacks_and_exit(data);
 	stack_add_back(stack, new);
 	tmp = (*stack)->next;
 	stack_delone(stack);
@@ -111,18 +108,15 @@ int	rab(t_stack **stack, int a_or_b, t_data *data)
 	return (rotate_feedback(CLOCK, a_or_b, data));
 }
 
-int	rr(t_stack **pile_a, t_stack **pile_b, t_data *data)
+int	rr(t_stack **pile_a, t_stack **pile_b, t_data *data) // OK
 {
 	int		res_ra;
 	int		res_rb;
 
 	res_ra = rab(pile_a, COMBINED, data);
-	if (res_ra != 0)
-		return (-1);
 	res_rb = rab(pile_b, COMBINED, data);
-	if (res_rb != 0)
-		return (-1);
-	msg_writer(STDOUT_FILENO, "rr\n", data);
+	if (!res_ra || !res_rb)
+		msg_writer(STDOUT_FILENO, "rr\n", data);
 	data->counter++;
 	return (0);
 }

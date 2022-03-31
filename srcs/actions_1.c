@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 12:01:15 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/30 18:52:37 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 13:00:28 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ Do nothing if a is empty.
 
 */
 
-int	sab(t_stack **pile, int	a_or_b, t_data *data)
+int	sab(t_stack **pile, int	a_or_b, t_data *data) // OK
 {	
 	int		tmp_num;
 	int		tmp_pos;
 
 	if (!*pile || !(*pile)->next)
-		return (-1);
+		return (1);
 	tmp_num = (*pile)->num;
 	(*pile)->num = (*pile)->next->num;
 	(*pile)->next->num = tmp_num;
@@ -52,32 +52,31 @@ int	sab(t_stack **pile, int	a_or_b, t_data *data)
 	return (0);
 }
 
-int	ss(t_stack **pile_a, t_stack **pile_b, t_data *data)
+int	ss(t_stack **pile_a, t_stack **pile_b, t_data *data) // OK
 {
 	int		res_a;
 	int		res_b;
 
 	res_a = sab(pile_a, COMBINED, data);
-	if (res_a != 0)
-		return (-1);
 	res_b = sab(pile_b, COMBINED, data);
-	if (res_b != 0)
-		return (-1);
-	msg_writer(STDOUT_FILENO, "ss\n", data);
+	if (!res_a || !res_b)
+		msg_writer(STDOUT_FILENO, "ss\n", data);
 	data->counter++;
 	return (0);
 }
 
-int	pa(t_stack **pile_a, t_stack **pile_b, t_data *data)
+int	pa(t_stack **pile_a, t_stack **pile_b, t_data *data) // OK
 {
 	t_stack		*tmp;
 	t_stack		*tmp_2;
 	int			tmp_pos;
 
 	if (*pile_b == NULL)
-		return (-1);
+		return (1);
 	tmp_pos = (*pile_b)->sorted_pos;
 	tmp = stack_new((*pile_b)->num);
+	if (!tmp)
+		free_stacks_and_exit(data);
 	stack_add_front(pile_a, tmp);
 	(*pile_a)->sorted_pos = tmp_pos;
 	if (!(*pile_b)->next)
@@ -93,16 +92,18 @@ int	pa(t_stack **pile_a, t_stack **pile_b, t_data *data)
 	return (0);
 }
 
-int	pb(t_stack **pile_a, t_stack **pile_b, t_data *data)
+int	pb(t_stack **pile_a, t_stack **pile_b, t_data *data) // OK
 {
 	t_stack		*tmp;
 	t_stack		*tmp_2;
 	int			tmp_pos;
 
-	if (!*pile_a)
-		return (-1);
+	if (*pile_a == NULL)
+		return (1);
 	tmp_pos = (*pile_a)->sorted_pos;
 	tmp = stack_new((*pile_a)->num);
+	if (!tmp)
+		free_stacks_and_exit(data);
 	stack_add_front(pile_b, tmp);
 	(*pile_b)->sorted_pos = tmp_pos;
 	if (!(*pile_a)->next)
