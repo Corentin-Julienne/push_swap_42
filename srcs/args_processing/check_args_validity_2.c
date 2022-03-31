@@ -6,11 +6,11 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:26:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/30 16:53:43 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 14:57:53 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 /* compare the arr to a quiksorted copy of this arr. Check if they are equals
 return 0 if they are different, 1 arr already sorted,

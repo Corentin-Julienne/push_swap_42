@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 14:07:52 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 17:31:08 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,6 @@ int			*find_outliers(t_stack *pile);
 
 /* push_swap.c */
 
-int			decision_tree(t_data *data, int arr_len);
 void		msg_writer(int fildes, char *msg, t_data *data);
 
 /* STACK UTILS */

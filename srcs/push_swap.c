@@ -6,13 +6,13 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:55:29 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 14:04:45 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 17:33:14 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	decision_tree(t_data *data, int arr_len)
+static void	decision_tree(t_data *data, int arr_len)
 {
 	data->counter = 0;
 	
@@ -26,7 +26,6 @@ int	decision_tree(t_data *data, int arr_len)
 		algo_case_five_nums(data);
 	else if (arr_len >= 6)
 		algo_big_nums(data);
-	return (0);
 }
 
 void	msg_writer(int fildes, char *msg, t_data *data)
@@ -56,9 +55,11 @@ int	main(int argc, char **argv)
 	// verify if functional with proper testing at this point
 	decision_tree(data, data->stack_size);
 	display_pile(data->pile_a, data->pile_b); // debug function only, suppress after
-	handle_verifs(data);
-	ft_printf("moves : %i\n", data->counter);
+	handle_verifs(data); // debug function only, suppress after
+	ft_printf("moves : %i\n", data->counter); // BONUS
+	// free and then exit (delete pile B ?)
 	stack_clear(&data->pile_a);
+	free(data->nums);
 	free(data);
 	return (0);
 }

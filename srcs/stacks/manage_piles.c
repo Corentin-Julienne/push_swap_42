@@ -6,11 +6,13 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:36:08 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/30 15:39:09 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 15:20:59 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
+
+/* simply calculate the size of the stack */
 
 int	calc_pile_size(t_stack *pile)
 {
@@ -24,6 +26,9 @@ int	calc_pile_size(t_stack *pile)
 	}
 	return (pile_size);
 }
+
+/* this function calculate if it is quicker to rotate or reverse rotate
+to push a givent number to the top of the pile */
 
 int	distance_to_top_pile(int value, t_stack *pile)
 {
@@ -42,6 +47,9 @@ int	distance_to_top_pile(int value, t_stack *pile)
 	else
 		return (DOWN);
 }
+
+/* this function calculate the quickest path to the top pile
+for a given number and put it at the top */
 
 void	push_to_top_pile(t_data *data, int num, int pile_id)
 {

@@ -6,11 +6,11 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:20:37 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/30 15:32:05 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 14:57:53 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 /* check if args are numbers only, within the int range,
 without duplicates, and non sorted yet. 

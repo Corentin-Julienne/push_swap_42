@@ -6,11 +6,11 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:41:38 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 13:11:35 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 17:46:43 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 /* debugging function : NOT TO PUSH FOR CORRECTION */
 
@@ -20,7 +20,7 @@ void	display_pile(t_stack *pile_a, t_stack *pile_b)
 
 	if (pile_a)
 	{
-		printf("PILE A\n");
+		ft_printf("PILE A\n");
 		iter = pile_a;
 		while (iter->next)
 		{
@@ -50,7 +50,7 @@ void	display_input(char **input)
 	i = 0;
 	while (input[i])
 	{
-		printf("%s\n", input[i]);
+		ft_printf("%s\n", input[i]);
 		i++;
 	}
 }
@@ -62,7 +62,7 @@ void	display_nums(t_data *data, int *nums)
 	i = 0;
 	while (i < data->stack_size)
 	{
-		printf("%i\n", nums[i]);
+		ft_printf("%i\n", nums[i]);
 		i++;
 	}
 }
@@ -71,7 +71,7 @@ void	display_sorted_positions(t_stack *pile)
 {
 	while (pile)
 	{
-		printf("%i\n", pile->sorted_pos);
+		ft_printf("%i\n", pile->sorted_pos);
 		pile = pile->next;
 	}
 }
@@ -83,7 +83,7 @@ void	handle_verifs(t_data *data)
 	pile_a = data->pile_a;
 	while (pile_a)
 	{
-		printf("%i\n", pile_a->sorted_pos);
+		ft_printf("%i\n", pile_a->sorted_pos);
 		pile_a = pile_a->next;
 	}
 }

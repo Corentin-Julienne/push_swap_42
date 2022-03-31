@@ -6,13 +6,16 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 18:56:01 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 14:07:12 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 17:29:09 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/push_swap.h"
 
-void	add_sorted_positions(t_data *data, t_stack *pile_a) // OK
+/* add sorted positions to data struct
+(the place in the pile if they are sorted) */
+
+void	add_sorted_positions(t_data *data, t_stack *pile_a)
 {
 	int		*nums;
 	int		i;
@@ -38,48 +41,55 @@ void	add_sorted_positions(t_data *data, t_stack *pile_a) // OK
 	}
 }
 
-static int handle_case_outlier(t_data *data, int num)
+/* check if the num in top of pile A is within the interval
+composed of the smallest and highest numbers in pile B
+if outside of interval (easiest case),
+push the smallest number to the top of pile B 
+return 0 if inside interval, 1 if not */
+
+static int handle_case_outlier(t_data *data, int num) // improvable by choosing nums[0] or nums[1] ? 
 {
-	int			*nums;
+	int			*outliers;
 	t_stack		*pile;
 	
 	pile = data->pile_b;
-	nums = find_outliers(pile);
-	if (!nums)
-		return (-2);
-	if (num < nums[0] || num > nums[1])
+	outliers = find_outliers(pile);
+	if (!outliers)
+		free_stacks_and_exit(data);
+	if (num < outliers[0] || num > outliers[1])
 	{
 		while (pile)
 		{
-			if (pile->num == nums[0])
+			if (pile->num == outliers[0])
 			{
-				push_to_top_pile(data, nums[0], BRAVO);
+				push_to_top_pile(data, outliers[0], BRAVO);
 				break ;
 			}
 			pile = pile->next;
 		}
-		free(nums);
-		return (-1);
+		free(outliers);
+		return (1);
 	}
-	free(nums);
+	free(outliers);
 	return (0);
 }
 
-int	find_good_pos(t_data *data) // bugged
+/* return -1 if no change are to made in pile B order
+return the position to put in  the top of pile B if changes are needed */
+
+int	find_good_pos(t_data *data)
 {
-	int			feedback;
 	int			target_pos;
 	int			gd_num;
 	int			diff;
 	t_stack		*pile;
 
-	feedback = handle_case_outlier(data, data->pile_a->num);
-	if (feedback < 0)
-		return (feedback);
+	if (handle_case_outlier(data, data->pile_a->num) == 1)
+		return (-1);
 	target_pos = data->pile_a->sorted_pos;
 	pile = data->pile_b;
 	diff = 0;
-	while (pile) // quand aucun nombre sup ne marche pas, traiter exceptions
+	while (pile)
 	{
 		if (pile->sorted_pos > target_pos
 			 && ((pile->sorted_pos - target_pos) < diff || (diff == 0)))
@@ -89,10 +99,14 @@ int	find_good_pos(t_data *data) // bugged
 		}
 		pile = pile->next;
 	}
-	if (diff == 0)
+	if (diff == 0 || data->pile_b->num == gd_num)
 		return (-1);
 	return (gd_num);
 }
+
+/* this function handle what number is needed in top of pile B
+to insert the num in top of pile A in a sorted way,
+then push this num in top of pile B */
 
 int	organize_pile_b(t_data *data)
 {	
@@ -112,18 +126,23 @@ int	organize_pile_b(t_data *data)
 	return (0);
 }
 
-void	empty_pile_bravo(t_data *data)
+void	empty_pile_bravo(t_data *data) // seems bugged as f*** before, yet need tests
 {
 	int		*nums;
+	int		stack_size;
 
 	while (data->pile_b)
 	{
-		nums = find_outliers(data->pile_b);
-		if (!nums)
-			return ;
-		if (nums[1] != data->pile_b->num)
-			push_to_top_pile(data, nums[1], BRAVO);
-		free(nums);
+		stack_size = calc_pile_size(data->pile_b);
+		if (stack_size >= 2)
+		{
+			nums = find_outliers(data->pile_b);
+			if (!nums)
+				free_stacks_and_exit(data);
+			if (nums[1] != data->pile_b->num)
+				push_to_top_pile(data, nums[1], BRAVO);
+			free(nums);
+		}
 		pa(&(data->pile_a), &(data->pile_b), data);
 	}
 }

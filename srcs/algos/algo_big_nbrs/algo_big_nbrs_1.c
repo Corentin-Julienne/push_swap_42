@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:33:46 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 14:08:22 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 15:09:52 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ static int	scan_number(t_data *data, int index_start, int index_end)
 	return (rtn_number(dist_up, dist_down, up, down));
 }
 
-/*  */
+/* choose num to push to top of pile A, then push it the most efficient way,
+then reorganize pile B  */
 
 static void	process_chunk(t_data *data, int chunk_len,
 	 int index_start, int index_end)

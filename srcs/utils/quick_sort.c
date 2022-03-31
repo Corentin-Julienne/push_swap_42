@@ -6,11 +6,11 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:51:25 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/30 16:08:10 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 15:07:11 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 /* an strdup-like function for int arrays */
 

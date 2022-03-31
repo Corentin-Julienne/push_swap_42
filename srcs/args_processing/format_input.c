@@ -6,11 +6,11 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:28:05 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/30 14:46:13 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/03/31 15:02:05 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 /* calculate the stack size and store it into the data struct */
 
