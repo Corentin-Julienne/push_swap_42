@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:41:38 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 17:34:55 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:51:45 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ void	msg_accept_input(void)
 
 /* check if stack sorted (the other pile MUST BE EMPTY) */
 
-void	is_stack_sorted(t_data *data, int pile) // yet to test
+void	is_stack_sorted(t_data *data, int pile_id) // yet to test
 {
 	t_stack		*pile;
 	int			*nums;
 	int			*nums_dup;
 	int			stack_size;
 	
-	if (pile == ALPHA)
+	if (pile_id == ALPHA)
 		pile = data->pile_a;
-	else if (pile == BRAVO)
+	else
 		pile = data->pile_b;
 	nums = pile_to_int_arr(pile);
 	if (! nums)

@@ -6,12 +6,13 @@
 #    By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/06 16:06:37 by cjulienn          #+#    #+#              #
-#    Updated: 2022/04/01 17:00:14 by cjulienn         ###   ########.fr        #
+#    Updated: 2022/04/01 17:48:37 by cjulienn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= push_swap
 
+## debug utils to suppress before correction
 SRCS= ./srcs/actions/actions_1.c \
 	  ./srcs/actions/actions_2.c \
 	  ./srcs/algos/algo_big_nbrs/algo_big_nbrs_1.c \
@@ -31,8 +32,7 @@ SRCS= ./srcs/actions/actions_1.c \
 	  ./srcs/utils/interval.c \
 	  ./srcs/utils/quick_sort.c \
 	  ./srcs/push_swap.c \
-	  ## debug utils to suppress before correction
-	  ./srcs/debug_utils.c
+	  ./srcs/debug/debug_utils.c
 	  
 OBJS = $(SRCS:.c=.o)
 

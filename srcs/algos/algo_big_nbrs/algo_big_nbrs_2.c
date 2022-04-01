@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 18:56:01 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 17:02:28 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:44:39 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,14 +111,12 @@ then push this num in top of pile B */
 int	organize_pile_bravo(t_data *data)
 {	
 	int			gd_num;
-	t_stack		*pile;
 	
 	if (!data->pile_b || !data->pile_b->next)
 	{
 		pb(&(data->pile_a), &(data->pile_b), data);
 		return (0);
 	}
-	pile = data->pile_b;
 	gd_num = find_good_pos(data);
 	if (gd_num != -1)
 		push_to_top_pile(data, gd_num, BRAVO);

@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 17:39:02 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:51:18 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,8 @@ t_stack		*stack_new(int nb);
 /* UTILS */
 
 /* algo_utils.c */
+void		sort_param_top_b(t_data *data, int *nums, int num_len);
 int			*pile_to_int_arr(t_stack *pile);
-void		sort_outlier(t_data *data, int outlier);
-void		sort_pile_bravo(t_data *data);
-void		sort_pile_alpha(t_data *data);
 /* free.c */
 void		error_and_exit(t_data *data);
 void		free_stacks_and_exit(t_data *data);
@@ -134,7 +132,7 @@ void		msg_writer(int fildes, char *msg, t_data *data);
 /* debug_utils.c */
 void		leaks_tracking(void);
 void		msg_accept_input(void);
-void		is_stack_sorted(t_data *data, int pile);
+void		is_stack_sorted(t_data *data, int pile_id);
 void		display_pile(t_stack *pile_a, t_stack *pile_b);
 void		final_verifs(t_data *data);
 

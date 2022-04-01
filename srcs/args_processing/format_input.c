@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:28:05 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 17:12:57 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:48:10 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*join_args(char *input, int argc, char **argv, t_data *data)
 	int		i;
 
 	i = 2;
-	while (i < argv)
+	while (i < argc)
 	{
 		tmp = ft_strjoin(input, " ");
 		if (!tmp)
