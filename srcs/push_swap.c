@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:55:29 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 17:22:54 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:41:00 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 		error_and_exit(NULL);
 	input = format_input(argc, argv, data);
 	data->nums = check_args_are_valid(input, data);
+	msg_accept_input(); // debug func
 	data->pile_a = create_pile_a(data->nums, data->stack_size);
 	if (!data->pile_a)
 	{
@@ -50,7 +51,9 @@ int	main(int argc, char **argv)
 		error_and_exit(data);
 	}
 	data->pile_b = NULL;
+	display_pile(data->pile_a, data->pile_b); // debug func
 	decision_tree(data, data->stack_size);
+	final_verifs(data); // debug func
 	stack_clear(&data->pile_a);
 	stack_clear(&data->pile_b);
 	free(data->nums);

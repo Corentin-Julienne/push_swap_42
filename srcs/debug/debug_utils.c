@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:41:38 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 17:17:40 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:34:55 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 /* debugging function : NOT TO PUSH FOR CORRECTION */
 
+void	leaks_tracking(void) // yet to test
+{
+	system("push_swap leak");
+}
+
 /* just print a msg if input accepted by the push_swap program */
 
 void	msg_accept_input(void)
 {
-	ft_putstr_fd("input has been accepted by the program\n", STDERR_FILENO);
+	ft_putstr_fd("input has been accepted by the program\n", STDIN_FILENO);
 	exit(EXIT_SUCCESS);
 }
 
@@ -51,11 +56,6 @@ void	is_stack_sorted(t_data *data, int pile) // yet to test
 	free(nums_dup);
 }
 
-void	leaks_tracking(void) // yet to test
-{
-	system("push_swap leak");
-}
-
 void	display_pile(t_stack *pile_a, t_stack *pile_b) // functionnal
 {
 	t_stack		*iter;
@@ -85,47 +85,13 @@ void	display_pile(t_stack *pile_a, t_stack *pile_b) // functionnal
 	ft_printf("\n----------------------------------\n");
 }
 
-void	display_input(char **input) // functionnal
+void	final_verifs(t_data *data)
 {
-	int		i;
-
-	i = 0;
-	while (input[i])
-	{
-		ft_printf("%s\n", input[i]);
-		i++;
-	}
-}
-
-void	display_nums(t_data *data, int *nums) // functionnal
-{
-	int		i;
-
-	i = 0;
-	while (i < data->stack_size)
-	{
-		ft_printf("%i\n", nums[i]);
-		i++;
-	}
-}
-
-void	display_sorted_positions(t_stack *pile) // functionnal
-{
-	while (pile)
-	{
-		ft_printf("%i\n", pile->sorted_pos);
-		pile = pile->next;
-	}
-}
-
-void	handle_verifs(t_data *data) // functionnal
-{
-	t_stack		*pile_a;
-
-	pile_a = data->pile_a;
-	while (pile_a)
-	{
-		ft_printf("%i\n", pile_a->sorted_pos);
-		pile_a = pile_a->next;
-	}
+	ft_printf("\n----------------------------------\n");
+	ft_printf("Check if pile B is empty, it should be !!!!\n");
+	display_pile(NULL, data->pile_b);
+	ft_printf("See if pile A is sorted !!!\n");
+	is_stack_sorted(data, ALPHA);
+	ft_printf("\n----------------------------------\n");
+	ft_printf("Program terminated ! Keep going, initiate !!!\n");
 }
