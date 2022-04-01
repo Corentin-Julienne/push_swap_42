@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 17:00:47 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:09:32 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@
 # include <stdio.h>
 # include <limits.h>
 
-# define 	ALPHA		1
-# define 	BRAVO		2
-# define	COMBINED	3
+# define ALPHA		1
+# define BRAVO		2
+# define COMBINED	3
 
-# define	UP			1
-# define	DOWN		2
+# define UP			1
+# define DOWN		2
 
-# define	CLOCK		1
-# define	REVERSE		2
+# define CLOCK		1
+# define REVERSE	2
 
 typedef struct s_data
 {
@@ -50,7 +50,7 @@ typedef struct s_stack
 /* ACTIONS */
 
 /* actions_1.c */
-int			sab(t_stack **pile, int	a_or_b, t_data *data);
+int			sab(t_stack **pile, int a_or_b, t_data *data);
 int			ss(t_stack **pile_a, t_stack **pile_b, t_data *data);
 int			pa(t_stack **pile_a, t_stack **pile_b, t_data *data);
 int			pb(t_stack **pile_a, t_stack **pile_b, t_data *data);

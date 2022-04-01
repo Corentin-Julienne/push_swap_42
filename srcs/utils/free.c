@@ -6,13 +6,14 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 16:29:30 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 15:06:57 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:13:42 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-/* free data struct if allocated, then print Error\n and exit with EXIT_FAILURE */
+/* free data struct if allocated, then print Error\n
+and exit with EXIT_FAILURE */
 
 void	error_and_exit(t_data *data)
 {

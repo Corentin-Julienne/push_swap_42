@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 12:01:15 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 16:41:56 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:10:19 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Do nothing if a is empty.
 
 */
 
-int	sab(t_stack **pile, int	a_or_b, t_data *data)
+int	sab(t_stack **pile, int a_or_b, t_data *data)
 {	
 	int		tmp_num;
 	int		tmp_pos;

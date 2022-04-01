@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:36:08 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 15:20:59 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:11:50 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,19 @@ void	push_to_top_pile(t_data *data, int num, int pile_id)
 			rab(&(data->pile_a), ALPHA, data);
 	}
 	else if (pile_id == ALPHA
-		 && distance_to_top_pile(num, data->pile_a) == DOWN)
+		&& distance_to_top_pile(num, data->pile_a) == DOWN)
 	{
 		while (data->pile_a->num != num)
 			rrab(&(data->pile_a), ALPHA, data);
 	}
 	else if (pile_id == BRAVO
-		 && distance_to_top_pile(num, data->pile_b) == UP)
+		&& distance_to_top_pile(num, data->pile_b) == UP)
 	{
 		while (data->pile_b->num != num)
 			rab(&(data->pile_b), BRAVO, data);
 	}
 	else if (pile_id == BRAVO
-		 && distance_to_top_pile(num, data->pile_b) == DOWN)
+		&& distance_to_top_pile(num, data->pile_b) == DOWN)
 	{
 		while (data->pile_b->num != num)
 			rrab(&(data->pile_b), BRAVO, data);

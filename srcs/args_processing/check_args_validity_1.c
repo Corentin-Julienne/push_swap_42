@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:20:37 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 14:57:53 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:12:43 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ also return an arr of int with the nums to sort */
 static void	check_if_data_is_int(char **input, t_data *data)
 {
 	int		errors;
-	
+
 	data->i = 0;
 	errors = 0;
 	while (data->i < data->stack_size)

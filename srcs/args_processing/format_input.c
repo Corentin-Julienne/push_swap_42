@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:28:05 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 15:02:05 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:12:57 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	calc_stack_size(t_data *data, char **input_arr)
 
 	data->stack_size = 0;
 	i = 0;
-	while(input_arr && input_arr[i])
+	while (input_arr && input_arr[i])
 	{
 		data->stack_size++;
 		i++;

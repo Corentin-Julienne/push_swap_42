@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 12:01:17 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 16:46:33 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:10:48 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ rr : ra and rb at the same time.
 
 */
 
-static int	rotate_feedback(int	direction, int a_or_b, t_data *data)
+static int	rotate_feedback(int direction, int a_or_b, t_data *data)
 {
 	if (a_or_b == ALPHA && direction == REVERSE)
 		msg_writer(STDOUT_FILENO, "rra\n", data);

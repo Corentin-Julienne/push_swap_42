@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:54:58 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 16:03:35 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:14:21 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	sort_param_top_b(t_data *data, int *nums, int num_len)
 		if (check_if_already_sorted(nums, num_len) == 0)
 		{
 			if (distance_from_sorted_pos(data->pile_a->num, data->pile_a)
-				 == CLOCK)
+				== CLOCK)
 				rab(&(data->pile_a), ALPHA, data);
 			else
 				rrab(&(data->pile_a), ALPHA, data);
@@ -48,8 +48,8 @@ int	*pile_to_int_arr(t_stack *pile)
 {
 	int		*nums;
 	int		pile_size;
-	int 	i;
-	
+	int		i;
+
 	pile_size = calc_pile_size(pile);
 	nums = (int *)malloc(sizeof(int) * pile_size);
 	if (!nums)
