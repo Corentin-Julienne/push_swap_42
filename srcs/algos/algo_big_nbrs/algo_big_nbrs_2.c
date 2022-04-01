@@ -6,40 +6,11 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 18:56:01 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 17:29:09 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 16:08:53 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/push_swap.h"
-
-/* add sorted positions to data struct
-(the place in the pile if they are sorted) */
-
-void	add_sorted_positions(t_data *data, t_stack *pile_a)
-{
-	int		*nums;
-	int		i;
-
-	nums = pile_to_int_arr(data->pile_a);
-	if (!nums)
-		free_stacks_and_exit(data);
-	quicksort(nums, 0, data->stack_size - 1);
-	i = 0;
-	while (pile_a)
-	{
-		while (i < data->stack_size)
-		{
-			if (nums[i] == pile_a->num)
-			{
-				pile_a->sorted_pos = i;
-				break ;
-			}
-			i++;
-		}
-		i = 0;
-		pile_a = pile_a->next;
-	}
-}
 
 /* check if the num in top of pile A is within the interval
 composed of the smallest and highest numbers in pile B
@@ -77,7 +48,7 @@ static int handle_case_outlier(t_data *data, int num) // improvable by choosing 
 /* return -1 if no change are to made in pile B order
 return the position to put in  the top of pile B if changes are needed */
 
-int	find_good_pos(t_data *data)
+static int	find_good_pos(t_data *data)
 {
 	int			target_pos;
 	int			gd_num;
@@ -102,6 +73,35 @@ int	find_good_pos(t_data *data)
 	if (diff == 0 || data->pile_b->num == gd_num)
 		return (-1);
 	return (gd_num);
+}
+
+/* add sorted positions to data struct
+(the place in the pile if they are sorted) */
+
+void	add_sorted_positions(t_data *data, t_stack *pile_a)
+{
+	int		*nums;
+	int		i;
+
+	nums = pile_to_int_arr(data->pile_a);
+	if (!nums)
+		free_stacks_and_exit(data);
+	quicksort(nums, 0, data->stack_size - 1);
+	i = 0;
+	while (pile_a)
+	{
+		while (i < data->stack_size)
+		{
+			if (nums[i] == pile_a->num)
+			{
+				pile_a->sorted_pos = i;
+				break ;
+			}
+			i++;
+		}
+		i = 0;
+		pile_a = pile_a->next;
+	}
 }
 
 /* this function handle what number is needed in top of pile B

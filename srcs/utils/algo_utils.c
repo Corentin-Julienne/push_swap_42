@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:54:58 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 17:40:05 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 16:03:35 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ void	sort_param_top_b(t_data *data, int *nums, int num_len)
 	}
 }
 
-/* not sure to keep this one */
+/* this function convert a pile (A or B) to an int arr,
+in the sane order. Contains only the numbers,
+not the position or other data */
 
 int	*pile_to_int_arr(t_stack *pile)
 {
@@ -60,21 +62,4 @@ int	*pile_to_int_arr(t_stack *pile)
 		i++;
 	}
 	return (nums);
-}
-
-/* not sure to keep this one */
-
-void	sort_outlier(t_data *data, int outlier)
-{
-	if (distance_to_top_pile(outlier, data->pile_b) == UP)
-	{
-		while (data->pile_b->num != outlier)
-			rab(&(data->pile_b), BRAVO, data);
-	}
-	else
-	{
-		while (data->pile_b->num != outlier)
-			rrab(&(data->pile_b), BRAVO, data);
-	}
-	pa(&(data->pile_a), &(data->pile_b), data);
 }

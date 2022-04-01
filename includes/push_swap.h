@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 17:31:08 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 16:15:55 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,6 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }					t_stack;
 
-/* ALGOS */
-
-/* algos big num */
-void		algo_big_nums(t_data *data);
-void		add_sorted_positions(t_data *data, t_stack *pile_a);
-int			find_good_pos(t_data *data);
-int			organize_pile_b(t_data *data);
-void		empty_pile_bravo(t_data *data);
-/*algo_case_2.c*/
-void		algo_case_two_nums(t_data *data);
-/* algo_case_3.c */
-void		algo_case_three_nums(t_data *data, int *nums);
-/* algo_case_4.c */
-void		algo_case_four_nums(t_data *data);
-/* algo_case_5.c*/
-void		algo_case_five_nums(t_data *data);
-/* common_funcs.c */
-void		sort_param_top_b(t_data *data, int *nums, int num_len);
-
 /* ACTIONS */
 
 /* actions_1.c */
@@ -80,64 +61,42 @@ int			rr(t_stack **pile_a, t_stack **pile_b, t_data *data);
 int			rrab(t_stack **stack, int a_or_b, t_data *data);
 int			rrr(t_stack **pile_a, t_stack **pile_b, t_data *data);
 
-/* algo_utils.c */
+/* ALGOS */
 
-int			*pile_to_int_arr(t_stack *pile);
-void		sort_outlier(t_data *data, int outlier);
-void		sort_pile_bravo(t_data *data);
-void		sort_pile_alpha(t_data *data);
+/* algo_big_nbrs_1.c */
+void		algo_big_nums(t_data *data);
+/* algo_big_nbrs_2.c */
+void		add_sorted_positions(t_data *data, t_stack *pile_a);
+int			organize_pile_b(t_data *data);
+void		empty_pile_bravo(t_data *data);
+/*algo_case_2.c*/
+void		algo_case_two_nums(t_data *data);
+/* algo_case_3.c */
+void		algo_case_three_nums(t_data *data, int *nums);
+/* algo_case_4.c */
+void		algo_case_four_nums(t_data *data);
+/* algo_case_5.c*/
+void		algo_case_five_nums(t_data *data);
+
+/* ARGS PROCESSING */
 
 /* check_args_validity_1.c */
-
 int			*check_args_are_valid(char **input, t_data *data);
-
 /* check_args_validity_2.c */
-
 int			check_if_already_sorted(int *nums, int stack_size);
 int			check_if_duplicates(int	*nums, int stack_size);
 int			is_int_compatible(const char *str);
-
-/* debug_utils.c */
-
-void		display_pile(t_stack *pile_a, t_stack *pile_b);
-void		display_input(char **input);
-void		display_nums(t_data *data, int *nums);
-void		display_sorted_positions(t_stack *pile);
-void		handle_verifs(t_data *data);
-
 /* format_input.c */
-
 char		**format_input(int argc, char **argv, t_data *data);
 
-/* free.c */
-
-void		error_and_exit(t_data *data);
-void		free_stacks_and_exit(t_data *data);
-
-/* quicksort.c */
-
-int			*int_arr_dup(int *to_cpy, int arr_size);
-int			are_arr_equals(int *arr_a, int *arr_b, int arr_size);
-void		quicksort(int *nums, int begin, int end);
+/* STACKS */
 
 /* manage_piles.c */
-
 int			calc_pile_size(t_stack *pile);
 int			distance_to_top_pile(int value, t_stack *pile);
 void		push_to_top_pile(t_data *data, int num, int pile_id);
 int			distance_from_sorted_pos(int value, t_stack *pile);
 t_stack		*create_pile_a(int *nums, int arnb);
-
-/* outliers.c */
-
-int			*find_outliers(t_stack *pile);
-
-/* push_swap.c */
-
-void		msg_writer(int fildes, char *msg, t_data *data);
-
-/* STACK UTILS */
-
 /* stack_utils_1.c */
 void		stack_delone(t_stack **stack);
 void		stack_clear(t_stack **stack);
@@ -148,5 +107,36 @@ t_stack		*stack_last(t_stack *stack);
 t_stack		*stack_penultimate(t_stack *stack);
 int			stack_size(t_stack *stack);
 t_stack		*stack_new(int nb);
+
+/* UTILS */
+
+/* algo_utils.c */
+int			*pile_to_int_arr(t_stack *pile);
+void		sort_outlier(t_data *data, int outlier);
+void		sort_pile_bravo(t_data *data);
+void		sort_pile_alpha(t_data *data);
+/* free.c */
+void		error_and_exit(t_data *data);
+void		free_stacks_and_exit(t_data *data);
+/* outliers.c */
+int			*find_outliers(t_stack *pile);
+/* quicksort.c */
+int			*int_arr_dup(int *to_cpy, int arr_size);
+int			are_arr_equals(int *arr_a, int *arr_b, int arr_size);
+void		quicksort(int *nums, int begin, int end);
+
+/* FILE CONTAINING MAIN */
+
+/* push_swap.c */
+void		msg_writer(int fildes, char *msg, t_data *data);
+
+/* DEBUG UTILS : KILL BEFORE CORRECTION PROCESS*/
+
+/* debug_utils.c */
+void		display_pile(t_stack *pile_a, t_stack *pile_b);
+void		display_input(char **input);
+void		display_nums(t_data *data, int *nums);
+void		display_sorted_positions(t_stack *pile);
+void		handle_verifs(t_data *data);
 
 #endif

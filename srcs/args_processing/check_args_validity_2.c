@@ -6,11 +6,37 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:26:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 14:57:53 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 16:11:20 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+/* check if every int is within int range */
+
+static int	check_int_limits(const char *ptn, int sign)
+{
+	char				*str;
+	unsigned long long	res;
+	long long			res_with_sign;
+
+	str = (char *)ptn;
+	res = 0;
+	if (ft_strlen(str) > 10)
+		return (1);
+	while (str[0])
+	{
+		if (str[0] >= '0' && str[0] <= '9')
+			res = (res * 10) + (str[0] - '0');
+		else
+			break ;
+		str++;
+	}
+	res_with_sign = sign * res;
+	if (res_with_sign > INT_MAX || res_with_sign < INT_MIN)
+		return (1);
+	return (0);
+}
 
 /* compare the arr to a quiksorted copy of this arr. Check if they are equals
 return 0 if they are different, 1 arr already sorted,
@@ -59,32 +85,6 @@ int	check_if_duplicates(int	*nums, int stack_size)
 		return (1);
 	errors += check_if_already_sorted(nums, stack_size);
 	return (errors);
-}
-
-/* check if every int is within int range */
-
-static int	check_int_limits(const char *ptn, int sign)
-{
-	char				*str;
-	unsigned long long	res;
-	long long			res_with_sign;
-
-	str = (char *)ptn;
-	res = 0;
-	if (ft_strlen(str) > 10)
-		return (1);
-	while (str[0])
-	{
-		if (str[0] >= '0' && str[0] <= '9')
-			res = (res * 10) + (str[0] - '0');
-		else
-			break ;
-		str++;
-	}
-	res_with_sign = sign * res;
-	if (res_with_sign > INT_MAX || res_with_sign < INT_MIN)
-		return (1);
-	return (0);
 }
 
 /* check if is a number (verify if within int range in the next function) */
