@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 16:15:55 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:00:47 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include <fcntl.h>
 # include <limits.h>
 
 # define 	ALPHA		1
@@ -67,7 +66,7 @@ int			rrr(t_stack **pile_a, t_stack **pile_b, t_data *data);
 void		algo_big_nums(t_data *data);
 /* algo_big_nbrs_2.c */
 void		add_sorted_positions(t_data *data, t_stack *pile_a);
-int			organize_pile_b(t_data *data);
+int			organize_pile_bravo(t_data *data);
 void		empty_pile_bravo(t_data *data);
 /*algo_case_2.c*/
 void		algo_case_two_nums(t_data *data);
@@ -96,7 +95,7 @@ int			calc_pile_size(t_stack *pile);
 int			distance_to_top_pile(int value, t_stack *pile);
 void		push_to_top_pile(t_data *data, int num, int pile_id);
 int			distance_from_sorted_pos(int value, t_stack *pile);
-t_stack		*create_pile_a(int *nums, int arnb);
+t_stack		*create_pile_a(int *nums, int size_of_stack);
 /* stack_utils_1.c */
 void		stack_delone(t_stack **stack);
 void		stack_clear(t_stack **stack);
@@ -118,8 +117,8 @@ void		sort_pile_alpha(t_data *data);
 /* free.c */
 void		error_and_exit(t_data *data);
 void		free_stacks_and_exit(t_data *data);
-/* outliers.c */
-int			*find_outliers(t_stack *pile);
+/* interval.c */
+int			*find_interval(t_stack *pile);
 /* quicksort.c */
 int			*int_arr_dup(int *to_cpy, int arr_size);
 int			are_arr_equals(int *arr_a, int *arr_b, int arr_size);

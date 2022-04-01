@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 12:01:15 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 14:58:58 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 16:41:56 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Do nothing if a is empty.
 
 */
 
-int	sab(t_stack **pile, int	a_or_b, t_data *data) // OK
+int	sab(t_stack **pile, int	a_or_b, t_data *data)
 {	
 	int		tmp_num;
 	int		tmp_pos;
@@ -52,7 +52,7 @@ int	sab(t_stack **pile, int	a_or_b, t_data *data) // OK
 	return (0);
 }
 
-int	ss(t_stack **pile_a, t_stack **pile_b, t_data *data) // OK
+int	ss(t_stack **pile_a, t_stack **pile_b, t_data *data)
 {
 	int		res_a;
 	int		res_b;
@@ -65,7 +65,7 @@ int	ss(t_stack **pile_a, t_stack **pile_b, t_data *data) // OK
 	return (0);
 }
 
-int	pa(t_stack **pile_a, t_stack **pile_b, t_data *data) // OK
+int	pa(t_stack **pile_a, t_stack **pile_b, t_data *data)
 {
 	t_stack		*tmp;
 	t_stack		*tmp_2;
@@ -92,7 +92,7 @@ int	pa(t_stack **pile_a, t_stack **pile_b, t_data *data) // OK
 	return (0);
 }
 
-int	pb(t_stack **pile_a, t_stack **pile_b, t_data *data) // OK
+int	pb(t_stack **pile_a, t_stack **pile_b, t_data *data)
 {
 	t_stack		*tmp;
 	t_stack		*tmp_2;

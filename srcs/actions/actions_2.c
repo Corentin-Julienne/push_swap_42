@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 12:01:17 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 14:59:01 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 16:46:33 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ rr : ra and rb at the same time.
 
 */
 
-static int	rotate_feedback(int	direction, int a_or_b, t_data *data) // OK
+static int	rotate_feedback(int	direction, int a_or_b, t_data *data)
 {
 	if (a_or_b == ALPHA && direction == REVERSE)
 		msg_writer(STDOUT_FILENO, "rra\n", data);
@@ -47,7 +47,7 @@ static int	rotate_feedback(int	direction, int a_or_b, t_data *data) // OK
 	return (0);
 }
 
-int	rrab(t_stack **stack, int a_or_b, t_data *data) // OK
+int	rrab(t_stack **stack, int a_or_b, t_data *data)
 {
 	t_stack		*last_elem;
 	t_stack		*first;
@@ -72,7 +72,7 @@ int	rrab(t_stack **stack, int a_or_b, t_data *data) // OK
 	return (rotate_feedback(REVERSE, a_or_b, data));
 }
 
-int	rrr(t_stack **pile_a, t_stack **pile_b, t_data *data) // OK
+int	rrr(t_stack **pile_a, t_stack **pile_b, t_data *data)
 {
 	int		res_ra;
 	int		res_rb;
@@ -85,7 +85,7 @@ int	rrr(t_stack **pile_a, t_stack **pile_b, t_data *data) // OK
 	return (0);
 }
 
-int	rab(t_stack **stack, int a_or_b, t_data *data) // OK
+int	rab(t_stack **stack, int a_or_b, t_data *data)
 {
 	int			num_tmp;
 	int			pos_tmp;
@@ -108,7 +108,7 @@ int	rab(t_stack **stack, int a_or_b, t_data *data) // OK
 	return (rotate_feedback(CLOCK, a_or_b, data));
 }
 
-int	rr(t_stack **pile_a, t_stack **pile_b, t_data *data) // OK
+int	rr(t_stack **pile_a, t_stack **pile_b, t_data *data)
 {
 	int		res_ra;
 	int		res_rb;

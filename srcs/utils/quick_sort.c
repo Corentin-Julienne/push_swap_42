@@ -6,11 +6,42 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:51:25 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 15:07:11 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:03:29 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+static void	ft_swap(int *a, int *b)
+{
+	int		tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+static int	partition(int *nums, int begin, int end)
+{
+	int		pivot;
+	int		i;
+	int		j;
+
+	pivot = nums[end];
+	i = begin - 1;
+	j = begin;
+	while (j <= (end - 1))
+	{
+		if (nums[j] < pivot)
+		{
+			i++;
+			ft_swap(&nums[i], &nums[j]);
+		}
+		j++;
+	}
+	ft_swap(&nums[i + 1], &nums[end]);
+	return (i + 1);
+}
 
 /* an strdup-like function for int arrays */
 
@@ -49,37 +80,6 @@ int	are_arr_equals(int *arr_a, int *arr_b, int arr_size)
 	if (diff == 0)
 		return (1);
 	return (0);
-}
-
-static void	ft_swap(int *a, int *b)
-{
-	int		tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-static int	partition(int *nums, int begin, int end)
-{
-	int		pivot;
-	int		i;
-	int		j;
-
-	pivot = nums[end];
-	i = begin - 1;
-	j = begin;
-	while (j <= (end - 1))
-	{
-		if (nums[j] < pivot)
-		{
-			i++;
-			ft_swap(&nums[i], &nums[j]);
-		}
-		j++;
-	}
-	ft_swap(&nums[i + 1], &nums[end]);
-	return (i + 1);
 }
 
 /* implement a quicksort in order to check if arr is sorted or not

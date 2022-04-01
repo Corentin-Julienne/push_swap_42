@@ -6,7 +6,7 @@
 #    By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/06 16:06:37 by cjulienn          #+#    #+#              #
-#    Updated: 2022/03/31 18:14:17 by cjulienn         ###   ########.fr        #
+#    Updated: 2022/04/01 17:00:14 by cjulienn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRCS= ./srcs/actions/actions_1.c \
 	  ./srcs/stacks/stack_utils_2.c \
 	  ./srcs/utils/algo_utils.c \
 	  ./srcs/utils/free.c \
-	  ./srcs/utils/outliers.c \
+	  ./srcs/utils/interval.c \
 	  ./srcs/utils/quick_sort.c \
 	  ./srcs/push_swap.c \
 	  ## debug utils to suppress before correction

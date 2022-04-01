@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 18:56:01 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 16:08:53 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:02:28 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,30 @@ if outside of interval (easiest case),
 push the smallest number to the top of pile B 
 return 0 if inside interval, 1 if not */
 
-static int handle_case_outlier(t_data *data, int num) // improvable by choosing nums[0] or nums[1] ? 
+static int handle_case_interval(t_data *data, int num) // improvable by choosing nums[0] or nums[1] ? 
 {
-	int			*outliers;
+	int			*interval;
 	t_stack		*pile;
 	
 	pile = data->pile_b;
-	outliers = find_outliers(pile);
-	if (!outliers)
+	interval = find_interval(pile);
+	if (!interval)
 		free_stacks_and_exit(data);
-	if (num < outliers[0] || num > outliers[1])
+	if (num < interval[0] || num > interval[1])
 	{
 		while (pile)
 		{
-			if (pile->num == outliers[0])
+			if (pile->num == interval[0])
 			{
-				push_to_top_pile(data, outliers[0], BRAVO);
+				push_to_top_pile(data, interval[0], BRAVO);
 				break ;
 			}
 			pile = pile->next;
 		}
-		free(outliers);
+		free(interval);
 		return (1);
 	}
-	free(outliers);
+	free(interval);
 	return (0);
 }
 
@@ -55,7 +55,7 @@ static int	find_good_pos(t_data *data)
 	int			diff;
 	t_stack		*pile;
 
-	if (handle_case_outlier(data, data->pile_a->num) == 1)
+	if (handle_case_interval(data, data->pile_a->num) == 1)
 		return (-1);
 	target_pos = data->pile_a->sorted_pos;
 	pile = data->pile_b;
@@ -108,7 +108,7 @@ void	add_sorted_positions(t_data *data, t_stack *pile_a)
 to insert the num in top of pile A in a sorted way,
 then push this num in top of pile B */
 
-int	organize_pile_b(t_data *data)
+int	organize_pile_bravo(t_data *data)
 {	
 	int			gd_num;
 	t_stack		*pile;
@@ -136,7 +136,7 @@ void	empty_pile_bravo(t_data *data) // seems bugged as f*** before, yet need tes
 		stack_size = calc_pile_size(data->pile_b);
 		if (stack_size >= 2)
 		{
-			nums = find_outliers(data->pile_b);
+			nums = find_interval(data->pile_b);
 			if (!nums)
 				free_stacks_and_exit(data);
 			if (nums[1] != data->pile_b->num)
