@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:55:29 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 17:41:00 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/04 18:54:36 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,26 @@ int	main(int argc, char **argv)
 	t_data		*data;
 	char		**input;
 
+	if (argc == 1)
+	{
+		ft_printf("\n");
+		exit(EXIT_SUCCESS);
+	}
 	data = (t_data *)malloc(sizeof(t_data));
 	if (!data)
 		error_and_exit(NULL);
 	input = format_input(argc, argv, data);
 	data->nums = check_args_are_valid(input, data);
+	if (data->is_sorted == 1)
+	{
+		free(data->nums);
+		free(data);
+		exit(EXIT_SUCCESS);
+	}
+	
 	msg_accept_input(); // debug func
+	exit(EXIT_SUCCESS);// for debugging
+	
 	data->pile_a = create_pile_a(data->nums, data->stack_size);
 	if (!data->pile_a)
 	{

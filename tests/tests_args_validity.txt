@@ -42,14 +42,14 @@ THIS TEST PROCEDURE COVERS THE FOLLOWING CASES :
 25) push_swap with an "5 four" as one arg only
 26) push_swap with an "5 four" among other valid args
 
-// push_swap with valid arguments [standard case]
+// push_swap with valid arguments [standard case] OK
 ./push_swap 98 45 21 999 5464 -24232 -534
 expected output : normal
 ./push_swap 8344235 -43223 64 0 1 -1 877 655 -9978 
 expected output : normal
 ./push_swap 0 -1 1 -8867655 8897867 -8776 
 expected output : normal
-./push_swap -87 87
+./push_swap 87 -87
 expected output : normal
 ./push_swap 0 -1 -2 -3 -4 -5 -6 -7 -8 -9 10
 expected output : normal
@@ -58,7 +58,7 @@ expected output : normal
 ./push_swap 1 2 3 4 5 6 7 8 9 0
 expected output : normal
 
-// push_swap without arguments
+// push_swap without arguments [SEGFAULT]
 ./push_swap
 expected output : nothing but functionnal 
 
@@ -94,12 +94,12 @@ expected output : Error\n
 ./push_swap -42313413412142434123423534353234331413534341243524512412
 expected output : Error\n 
 
-// push_swap with valid args except one int have an additionnal 0 at the beginning
+// push_swap with valid args except one int have an additionnal 0 at the beginning [correct this !]
 ./push_swap 09 5444 -4242342 65675
 expected output : Error\n 
 ./push_swap 5444 -53435345 645543 09
 expected output : Error\n
-./push_swap 54444 -454235532342 09 43442
+./push_swap 54444 -454232 09 43442
 expected output : Error\n
 
 // push_swap with valid args except ont neg int have an additionnal 0 at the beginning
@@ -168,7 +168,7 @@ expected output : Error\n
 ./push_swap 0-2147483648
 expected output : Error\n
 
-// push_swap with only "" as arg
+// push_swap with only "" as arg ==> do already sorted !
 ./push_swap ""
 expected output : Error\n [?]
 

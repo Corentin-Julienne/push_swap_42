@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:20:37 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 17:12:43 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/04 18:52:01 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ static void	check_if_data_is_int(char **input, t_data *data)
 int	*check_args_are_valid(char **input, t_data *data)
 {
 	int		*nums;
-	int		errors;
 
 	check_if_data_is_int(input, data);
-	errors = 0;
 	nums = (int *)malloc(sizeof(int) * (data->stack_size));
 	if (!nums)
 	{
@@ -51,11 +49,11 @@ int	*check_args_are_valid(char **input, t_data *data)
 		data->i++;
 	}
 	free(input);
-	errors = check_if_duplicates(nums, data->stack_size);
-	if (errors > 0 || errors == -1)
+	if (check_if_duplicates(nums, data->stack_size) != 0)
 	{
 		free(nums);
 		error_and_exit(data);
 	}
+	data->is_sorted = check_if_already_sorted(nums, data->stack_size);
 	return (nums);
 }

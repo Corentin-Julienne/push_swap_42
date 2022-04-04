@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 13:26:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 16:11:20 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/04 18:45:36 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static int	check_int_limits(const char *ptn, int sign)
 
 	str = (char *)ptn;
 	res = 0;
-	if (ft_strlen(str) > 10)
+	if ((ft_strlen(str) == 1 && sign == -1 && str[0] == 48)
+		|| (ft_strlen(str) > 1 && str[0] == 48) || ft_strlen(str) > 10)
 		return (1);
 	while (str[0])
 	{
@@ -65,26 +66,21 @@ int	check_if_duplicates(int	*nums, int stack_size)
 {
 	int		i;
 	int		j;
-	int		errors;
 
 	i = 0;
 	j = 0;
-	errors = 0;
 	while (j < stack_size)
 	{
 		while (i < stack_size)
 		{
 			if (nums[j] == nums[i] && j != i)
-				errors++;
+				return (1);
 			i++;
 		}
 		j++;
 		i = 0;
 	}
-	if (errors > 0)
-		return (1);
-	errors += check_if_already_sorted(nums, stack_size);
-	return (errors);
+	return (0);
 }
 
 /* check if is a number (verify if within int range in the next function) */

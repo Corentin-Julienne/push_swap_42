@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 17:51:18 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/04 18:50:13 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_data
 	int				counter;
 	struct s_stack	*pile_a;
 	struct s_stack	*pile_b;
+	int				is_sorted;
 }					t_data;
 
 typedef struct s_stack
