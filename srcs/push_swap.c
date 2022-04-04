@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:55:29 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/04 18:54:36 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/04 19:32:27 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,6 @@ int	main(int argc, char **argv)
 		free(data);
 		exit(EXIT_SUCCESS);
 	}
-	
-	msg_accept_input(); // debug func
-	exit(EXIT_SUCCESS);// for debugging
-	
 	data->pile_a = create_pile_a(data->nums, data->stack_size);
 	if (!data->pile_a)
 	{
@@ -67,7 +63,9 @@ int	main(int argc, char **argv)
 	data->pile_b = NULL;
 	display_pile(data->pile_a, data->pile_b); // debug func
 	decision_tree(data, data->stack_size);
+	display_pile(data->pile_a, data->pile_b); // debug func
 	final_verifs(data); // debug func
+	printf("total num of moves : %i\n", data->counter);
 	stack_clear(&data->pile_a);
 	stack_clear(&data->pile_b);
 	free(data->nums);

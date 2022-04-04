@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:41:38 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 17:51:45 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/04 19:28:04 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void	final_verifs(t_data *data)
 	ft_printf("\n----------------------------------\n");
 	ft_printf("Check if pile B is empty, it should be !!!!\n");
 	display_pile(NULL, data->pile_b);
-	ft_printf("See if pile A is sorted !!!\n");
 	is_stack_sorted(data, ALPHA);
 	ft_printf("\n----------------------------------\n");
 	ft_printf("Program terminated ! Keep going, initiate !!!\n");
