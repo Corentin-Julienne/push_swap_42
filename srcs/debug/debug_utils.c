@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:41:38 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/04 19:28:04 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:37:56 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,33 @@ void	msg_accept_input(void)
 	exit(EXIT_SUCCESS);
 }
 
+static void	mistake_report(t_data *data, int pile_id)
+{
+	int			*nums;
+	int			i;
+	t_stack		*pile;
+
+	if (pile_id == ALPHA)
+		pile = data->pile_a;
+	else
+		pile = data->pile_b;
+	nums = pile_to_int_arr(pile);
+	if (!nums)
+		ft_putstr_fd("malloc error\n", STDERR_FILENO);
+	quicksort(nums, 0, data->stack_size - 1);
+	i = 0;
+	while (i < data->stack_size)
+	{
+		if (nums[i] != pile->num)
+			printf("diff at index %i : is %i and should be %i\n", i, pile->num, nums[i]);
+		i++;
+		pile = pile->next;
+	}
+}
+
 /* check if stack sorted (the other pile MUST BE EMPTY) */
 
-void	is_stack_sorted(t_data *data, int pile_id) // yet to test
+void	is_stack_sorted(t_data *data, int pile_id)
 {
 	t_stack		*pile;
 	int			*nums;
@@ -51,7 +75,10 @@ void	is_stack_sorted(t_data *data, int pile_id) // yet to test
 	if (are_arr_equals(nums, nums_dup, stack_size) == 1)
 		ft_putstr_fd("stack is sorted !!!!\n", STDOUT_FILENO);
 	else
+	{
 		ft_putstr_fd("stack is not sorted !!!!\n", STDOUT_FILENO);
+		mistake_report(data, pile_id);
+	}
 	free(nums);
 	free(nums_dup);
 }

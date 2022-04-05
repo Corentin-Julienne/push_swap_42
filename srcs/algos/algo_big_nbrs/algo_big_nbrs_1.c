@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:33:46 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 16:51:19 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/05 20:23:41 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	process_chunk(t_data *data, int chunk_len,
 }
 
 /* for big numbers ( > 5), we won't use the same numbers of reps
-to sort pile A. So calc:chunk_num return the num of reps,
+to sort pile A. So calc_chunk_num return the num of reps,
 depending of the size of pile A */
 
 static int	calc_chunk_num(t_data *data)
@@ -79,9 +79,13 @@ static int	calc_chunk_num(t_data *data)
 	if (data->stack_size == 100)
 		return (5);
 	else if (data->stack_size == 500)
-		return (11);
+		return (15);
+	else if (data->stack_size > 5 && data->stack_size < 100)
+		return (5);
+	else if (data->stack_size > 100 && data->stack_size < 500)
+		return (5);
 	else
-		return (4); // change this
+		return (15);
 }
 
 /* used for big nums ( > 5)
@@ -96,11 +100,13 @@ void	algo_big_nums(t_data *data)
 	int		index_start;
 	int		index_end;
 	int		chunk_len;
+	int		last_chunk;
 
 	add_sorted_positions(data, data->pile_a);
 	reps = calc_chunk_num(data);
+	chunk_len = data->stack_size / reps;
+	last_chunk = data->stack_size % reps;
 	index_start = 0;
-	chunk_len = data->stack_size / reps; // works for even numbers only
 	index_end = chunk_len - 1;
 	while (reps > 0)
 	{
@@ -109,5 +115,8 @@ void	algo_big_nums(t_data *data)
 		index_end += chunk_len;
 		reps--;
 	}
+	if (last_chunk != 0)
+		process_chunk(data, last_chunk, index_start,
+			(index_end + last_chunk - 1));
 	empty_pile_bravo(data);
 }

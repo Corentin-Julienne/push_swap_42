@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/04 18:50:13 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:27:02 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void		algo_big_nums(t_data *data);
 void		add_sorted_positions(t_data *data, t_stack *pile_a);
 int			organize_pile_bravo(t_data *data);
 void		empty_pile_bravo(t_data *data);
+/* algo_big_nums_3.c */
+
 /*algo_case_2.c*/
 void		algo_case_two_nums(t_data *data);
 /* algo_case_3.c */

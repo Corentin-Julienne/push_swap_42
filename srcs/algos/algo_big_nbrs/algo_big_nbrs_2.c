@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 18:56:01 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 17:44:39 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:36:27 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,11 @@ int	organize_pile_bravo(t_data *data)
 	return (0);
 }
 
-void	empty_pile_bravo(t_data *data) // seems bugged as f*** before, yet need tests
+/* once pile A is empty, we have to find the biggest number in Stack B,
+move it to the top, and push it over to Stack A.
+Repeat this until Stack B is empty.*/
+
+void	empty_pile_bravo(t_data *data)
 {
 	int		*nums;
 	int		stack_size;
