@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:33:46 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/05 20:23:41 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/06 16:56:35 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ static int	scan_number(t_data *data, int index_start, int index_end)
 then reorganize pile B  */
 
 static void	process_chunk(t_data *data, int chunk_len,
-	 int index_start, int index_end)
+	int index_start, int index_end)
 {	
 	int		num_to_push_up;
-	
+
 	while (chunk_len > 0)
 	{
 		num_to_push_up = scan_number(data, index_start, index_end);

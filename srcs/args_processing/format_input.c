@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:28:05 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/01 17:48:10 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:28:10 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ char	**format_input(int argc, char **argv, t_data *data)
 		error_and_exit(data);
 	}
 	calc_stack_size(data, input_arr);
+	free(input);
 	return (input_arr);
 }

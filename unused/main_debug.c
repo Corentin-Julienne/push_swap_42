@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main_debug.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/06 15:55:29 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/06 17:20:31 by cjulienn         ###   ########.fr       */
+/*   Created: 2022/04/06 16:45:49 by cjulienn          #+#    #+#             */
+/*   Updated: 2022/04/06 16:45:51 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,6 @@ static void	decision_tree(t_data *data, int arr_len)
 		algo_big_nums(data);
 }
 
-static void	setup_stack_and_algo(t_data *data)
-{
-	data->pile_a = create_pile_a(data->nums, data->stack_size);
-	if (!data->pile_a)
-	{
-		free(data->nums);
-		error_and_exit(data);
-	}
-	data->pile_b = NULL;
-	decision_tree(data, data->stack_size);
-}
-
 void	msg_writer(int fildes, char *msg, t_data *data)
 {
 	if (write(fildes, msg, ft_strlen(msg)) == -1)
@@ -50,7 +38,6 @@ int	main(int argc, char **argv)
 	t_data		*data;
 	char		**input;
 
-	atexit(leaks_tracking); // leak tracker, suppress after use
 	if (argc == 1)
 	{
 		ft_printf("\n");
@@ -67,7 +54,21 @@ int	main(int argc, char **argv)
 		free(data);
 		exit(EXIT_SUCCESS);
 	}
-	setup_stack_and_algo(data);
-	suppress_leaks_bfr_exit(data);
+	data->pile_a = create_pile_a(data->nums, data->stack_size);
+	if (!data->pile_a)
+	{
+		free(data->nums);
+		error_and_exit(data);
+	}
+	data->pile_b = NULL;
+	display_pile(data->pile_a, data->pile_b); // debug func
+	decision_tree(data, data->stack_size);
+	display_pile(data->pile_a, data->pile_b); // debug func
+	final_verifs(data); // debug func
+	printf("total num of moves : %i\n", data->counter);
+	stack_clear(&data->pile_a);
+	stack_clear(&data->pile_b);
+	free(data->nums);
+	free(data);
 	return (0);
 }

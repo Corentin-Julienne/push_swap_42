@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:20:37 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/04 18:52:01 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:23:36 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	check_if_data_is_int(char **input, t_data *data)
 		errors += is_int_compatible(input[data->i++]);
 	if (errors > 0)
 	{
-		free(input);
+		free_split(input);
 		error_and_exit(data);
 	}
 }
@@ -39,7 +39,7 @@ int	*check_args_are_valid(char **input, t_data *data)
 	nums = (int *)malloc(sizeof(int) * (data->stack_size));
 	if (!nums)
 	{
-		free(input);
+		free_split(input);
 		error_and_exit(data);
 	}
 	data->i = 0;
@@ -48,7 +48,7 @@ int	*check_args_are_valid(char **input, t_data *data)
 		nums[data->i] = ft_atoi(input[data->i]);
 		data->i++;
 	}
-	free(input);
+	free_split(input);
 	if (check_if_duplicates(nums, data->stack_size) != 0)
 	{
 		free(nums);

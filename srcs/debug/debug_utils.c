@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:41:38 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/05 19:37:56 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:15:23 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 /* debugging function : NOT TO PUSH FOR CORRECTION */
 
-void	leaks_tracking(void) // yet to test
+void	leaks_tracking(void)
 {
-	system("push_swap leak");
+	system("leaks push_swap");
 }
 
 /* just print a msg if input accepted by the push_swap program */
@@ -83,7 +83,7 @@ void	is_stack_sorted(t_data *data, int pile_id)
 	free(nums_dup);
 }
 
-void	display_pile(t_stack *pile_a, t_stack *pile_b) // functionnal
+void	display_pile(t_stack *pile_a, t_stack *pile_b)
 {
 	t_stack		*iter;
 
@@ -111,6 +111,8 @@ void	display_pile(t_stack *pile_a, t_stack *pile_b) // functionnal
 	}
 	ft_printf("\n----------------------------------\n");
 }
+
+/* handle the verifs after the algo action */
 
 void	final_verifs(t_data *data)
 {

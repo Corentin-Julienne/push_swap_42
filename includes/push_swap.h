@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/05 19:27:02 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:20:17 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ int			*pile_to_int_arr(t_stack *pile);
 /* free.c */
 void		error_and_exit(t_data *data);
 void		free_stacks_and_exit(t_data *data);
+void		suppress_leaks_bfr_exit(t_data *data);
+void		free_split(char **split);
 /* interval.c */
 int			*find_interval(t_stack *pile);
 /* quicksort.c */

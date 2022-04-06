@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 18:56:01 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/05 19:36:27 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/06 16:56:01 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ if outside of interval (easiest case),
 push the smallest number to the top of pile B 
 return 0 if inside interval, 1 if not */
 
-static int handle_case_interval(t_data *data, int num) // improvable by choosing nums[0] or nums[1] ? 
+static int	handle_case_interval(t_data *data, int num)
 {
 	int			*interval;
 	t_stack		*pile;
-	
+
 	pile = data->pile_b;
 	interval = find_interval(pile);
 	if (!interval)
@@ -63,7 +63,7 @@ static int	find_good_pos(t_data *data)
 	while (pile)
 	{
 		if (pile->sorted_pos > target_pos
-			 && ((pile->sorted_pos - target_pos) < diff || (diff == 0)))
+			&& ((pile->sorted_pos - target_pos) < diff || (diff == 0)))
 		{
 			diff = pile->sorted_pos - target_pos;
 			gd_num = pile->num;
@@ -111,7 +111,7 @@ then push this num in top of pile B */
 int	organize_pile_bravo(t_data *data)
 {	
 	int			gd_num;
-	
+
 	if (!data->pile_b || !data->pile_b->next)
 	{
 		pb(&(data->pile_a), &(data->pile_b), data);

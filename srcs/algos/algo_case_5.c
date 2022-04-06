@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 15:41:57 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/03/31 13:18:18 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/06 16:54:36 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ then use sort_param_top_b to  */
 
 static void	handle_within_interval(t_data *data, int *nums, int num_len)
 {
-	while (data->pile_b->num > data->pile_a->num) // mistake there ?
+	while (data->pile_b->num > data->pile_a->num)
 		rab(&(data->pile_a), ALPHA, data);
 	pa(&(data->pile_a), &(data->pile_b), data);
 	sort_param_top_b(data, nums, num_len);
@@ -69,7 +69,8 @@ static void	handle_pile_bravo(t_data *data)
 	}
 }
 
-/* this algo push the first two nums on pile B, then apply algo for three nums on pile A
+/* this algo push the first two nums on pile B,
+then apply algo for three nums on pile A
 (if not sorted already), then handle pile B */
 
 void	algo_case_five_nums(t_data *data)
@@ -92,5 +93,5 @@ void	algo_case_five_nums(t_data *data)
 		algo_case_three_nums(data, three_nums);
 	free(three_nums);
 	handle_pile_bravo(data);
-	stack_clear(&(data->pile_b)); // useful ?
+	stack_clear(&(data->pile_b));
 }
