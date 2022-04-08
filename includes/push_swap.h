@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/06 17:20:17 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/08 14:00:06 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,9 @@ t_stack		*stack_new(int nb);
 /* UTILS */
 
 /* algo_utils.c */
+int			is_within_interval(t_stack *pile_b, int *nums, int num_size);
+void		handle_within_interval(t_data *data, int *nums, int num_len);
+void		handle_outside_interval(t_data *data, int *nums);
 void		sort_param_top_b(t_data *data, int *nums, int num_len);
 int			*pile_to_int_arr(t_stack *pile);
 /* free.c */
@@ -135,6 +138,7 @@ void		msg_writer(int fildes, char *msg, t_data *data);
 /* DEBUG UTILS : KILL BEFORE CORRECTION PROCESS*/
 
 /* debug_utils.c */
+void		*broken_malloc(void);
 void		leaks_tracking(void);
 void		msg_accept_input(void);
 void		is_stack_sorted(t_data *data, int pile_id);

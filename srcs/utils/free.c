@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 16:29:30 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/06 17:19:59 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/08 16:19:14 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ Won't segfault if pile_a or pile_b == NULL */
 void	free_stacks_and_exit(t_data *data)
 {
 	free(data->nums);
-	stack_clear(&data->pile_a);
-	stack_clear(&data->pile_b);
+
 	error_and_exit(data);
 }
 

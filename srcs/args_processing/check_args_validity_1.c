@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:20:37 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/06 17:23:36 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/07 13:41:43 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,21 @@ static void	check_if_data_is_int(char **input, t_data *data)
 	}
 }
 
+static void	check_dup_and_sorted_arr(t_data *data, int *nums)
+{
+	if (check_if_duplicates(nums, data->stack_size) != 0)
+	{
+		free(nums);
+		error_and_exit(data);
+	}
+	data->is_sorted = check_if_already_sorted(nums, data->stack_size);
+	if (data->is_sorted == -1)
+	{
+		free(nums);
+		error_and_exit(data);
+	}
+}
+
 int	*check_args_are_valid(char **input, t_data *data)
 {
 	int		*nums;
@@ -49,11 +64,6 @@ int	*check_args_are_valid(char **input, t_data *data)
 		data->i++;
 	}
 	free_split(input);
-	if (check_if_duplicates(nums, data->stack_size) != 0)
-	{
-		free(nums);
-		error_and_exit(data);
-	}
-	data->is_sorted = check_if_already_sorted(nums, data->stack_size);
+	check_dup_and_sorted_arr(data, nums);
 	return (nums);
 }

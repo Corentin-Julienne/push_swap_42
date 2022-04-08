@@ -22,7 +22,7 @@ else
 fi
 
 echo $ARG > chiffre.txt
-./push_swap $ARG | ./checker_linux $ARG | grep --color -E "OK|Error"
+./push_swap $ARG | ./checker_mac $ARG | grep --color -E "OK|Error"
 
 echo -n "nb of moves : "
 ./push_swap $ARG | wc -l

@@ -6,13 +6,21 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:41:38 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/06 17:15:23 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:41:37 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+# define BROKEN 	0
+# define CORRECT	1
+
 /* debugging function : NOT TO PUSH FOR CORRECTION */
+
+void	*broken_malloc(void)
+{
+	return (NULL);
+}
 
 void	leaks_tracking(void)
 {
