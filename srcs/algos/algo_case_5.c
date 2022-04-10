@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 15:41:57 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/08 13:58:24 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/10 14:51:41 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	algo_case_five_nums(t_data *data)
 
 	pb(&(data->pile_a), &(data->pile_b), data);
 	pb(&(data->pile_a), &(data->pile_b), data);
+	display_pile(data); // verif
 	nums = pile_to_int_arr(data->pile_a);
 	if (!nums)
 		free_stacks_and_exit(data);

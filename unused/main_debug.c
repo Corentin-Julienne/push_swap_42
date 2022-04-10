@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 16:45:49 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/06 16:45:51 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/10 15:26:42 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,64 @@ int	main(int argc, char **argv)
 	free(data->nums);
 	free(data);
 	return (0);
+}
+
+int	rab(t_data *data, int a_or_b)
+{
+	t_stack		*stack;
+	t_stack		*last_elem;
+	int			storage[2];
+	int			tmp[2];
+	
+	if (a_or_b == ALPHA)
+		stack = data->pile_a;
+	else
+		stack = data->pile_b;
+	printf("go till there\n");
+	printf("stack first num : %i\n", stack->num);
+	if (!stack || !stack->next)
+		return (1);
+	last_elem = stack_last(stack);
+	storage[0] = stack->num;
+	storage[1] = stack->sorted_pos;
+	while (last_elem)
+	{
+		tmp[0] = last_elem->num;
+		tmp[1] = last_elem->sorted_pos;
+		last_elem->num = storage[0];
+		last_elem->sorted_pos = storage[1];
+		storage[0] = tmp[0];
+		storage[1] = tmp[1];
+		last_elem = last_elem->prev;
+	}
+	return (rotate_feedback(CLOCK, a_or_b, data));
+}
+
+int	rrab(t_data *data, int a_or_b)
+{
+	t_stack		*stack;
+	t_stack		*last_elem;
+	int			storage[2];
+	int			tmp[2];
+
+	if (a_or_b == ALPHA)
+		stack = data->pile_a;
+	else
+		stack = data->pile_b;
+	if (!stack || !stack->next)
+		return (1);
+	last_elem = stack_last(stack);
+	storage[0] = last_elem->num;
+	storage[1] = last_elem->sorted_pos;
+	while (stack)
+	{
+		tmp[0] = stack->num;
+		tmp[1] = stack->sorted_pos;
+		stack->num = storage[0];
+		stack->sorted_pos = storage[1];
+		storage[0] = tmp[0];
+		storage[1] = tmp[1];
+		stack = stack->next;
+	}
+	return (rotate_feedback(REVERSE, a_or_b, data));
 }

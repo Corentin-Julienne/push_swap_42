@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 16:07:27 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/08 14:00:06 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/10 15:39:38 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ int			ss(t_stack **pile_a, t_stack **pile_b, t_data *data);
 int			pa(t_stack **pile_a, t_stack **pile_b, t_data *data);
 int			pb(t_stack **pile_a, t_stack **pile_b, t_data *data);
 /* actions_2.c */
-int			rab(t_stack **stack, int a_or_b, t_data *data);
-int			rr(t_stack **pile_a, t_stack **pile_b, t_data *data);
 int			rrab(t_stack **stack, int a_or_b, t_data *data);
 int			rrr(t_stack **pile_a, t_stack **pile_b, t_data *data);
+int			rab(t_stack **stack, int a_or_b, t_data *data);
+int			rr(t_stack **pile_a, t_stack **pile_b, t_data *data);
 
 /* ALGOS */
 
@@ -126,6 +126,7 @@ void		free_split(char **split);
 /* interval.c */
 int			*find_interval(t_stack *pile);
 /* quicksort.c */
+void		ft_swap(int *a, int *b);
 int			*int_arr_dup(int *to_cpy, int arr_size);
 int			are_arr_equals(int *arr_a, int *arr_b, int arr_size);
 void		quicksort(int *nums, int begin, int end);
@@ -142,7 +143,7 @@ void		*broken_malloc(void);
 void		leaks_tracking(void);
 void		msg_accept_input(void);
 void		is_stack_sorted(t_data *data, int pile_id);
-void		display_pile(t_stack *pile_a, t_stack *pile_b);
+void		display_pile(t_data *data);
 void		final_verifs(t_data *data);
 
 #endif

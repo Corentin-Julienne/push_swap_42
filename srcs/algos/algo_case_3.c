@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 15:29:26 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/08 13:17:13 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/10 15:44:51 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ void	algo_case_three_nums(t_data *data, int *nums)
 	else if (sort_result == 1)
 		return ;
 	if (nums[0] > nums[1] && nums[0] < nums[2])
-		sab(&(data->pile_a), ALPHA, data);
+		sab(&data->pile_a, ALPHA, data);
 	else if (nums[0] > nums[1] && nums[0] > nums[2] && nums[1] > nums[2])
 	{
-		sab(&(data->pile_a), ALPHA, data);
-		rrab(&(data->pile_a), ALPHA, data);
+		sab(&data->pile_a, ALPHA, data);
+		rrab(&data->pile_a, ALPHA, data);
 	}
 	else if (nums[0] > nums[1] && nums[0] > nums[2] && nums[1] < nums[2])
-		rab(&(data->pile_a), ALPHA, data);
+		rab(&data->pile_a, ALPHA, data);
 	else if (nums[0] < nums[1] && nums[0] < nums[2])
 	{
-		sab(&(data->pile_a), ALPHA, data);
-		rab(&(data->pile_a), ALPHA, data);
+		sab(&data->pile_a, ALPHA, data);
+		rab(&data->pile_a, ALPHA, data);
 	}
 	else if (nums[0] < nums[1] && nums[0] > nums[2])
-		rrab(&(data->pile_a), ALPHA, data);
+		rrab(&data->pile_a, ALPHA, data);
 }

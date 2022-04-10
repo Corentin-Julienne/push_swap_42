@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 12:01:15 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/08 14:33:45 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/10 15:36:58 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ Do nothing if there is only one or no elements).
 ss : sa and sb at the same time.
 
 pa : push a - take the first element at the top of b and put it at the top of a 
-Do nothing if b is empty.
+Do nothing if B is empty.
 
 pb : push b - take the first element at the top of a and put it at the top of b 
-Do nothing if a is empty.
+Do nothing if A is empty.
 
 */
 

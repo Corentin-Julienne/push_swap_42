@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:41:38 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/06 17:41:37 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/10 14:39:39 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,14 @@ void	is_stack_sorted(t_data *data, int pile_id)
 	free(nums_dup);
 }
 
-void	display_pile(t_stack *pile_a, t_stack *pile_b)
+void	display_pile(t_data *data)
 {
 	t_stack		*iter;
 
-	if (pile_a)
+	if (data->pile_a)
 	{
 		ft_printf("PILE A\n");
-		iter = pile_a;
+		iter = data->pile_a;
 		while (iter->next)
 		{
 			ft_printf("%i\n", iter->num);
@@ -106,10 +106,10 @@ void	display_pile(t_stack *pile_a, t_stack *pile_b)
 		}
 		ft_printf("%d\n", iter->num);
 	}
-	if (pile_b)
+	if (data->pile_b)
 	{
 		printf("PILE B\n");
-		iter = pile_b;
+		iter = data->pile_b;
 		while (iter->next)
 		{
 			ft_printf("%d\n", iter->num);
@@ -126,7 +126,7 @@ void	final_verifs(t_data *data)
 {
 	ft_printf("\n----------------------------------\n");
 	ft_printf("Check if pile B is empty, it should be !!!!\n");
-	display_pile(NULL, data->pile_b);
+	display_pile(data);
 	is_stack_sorted(data, ALPHA);
 	ft_printf("\n----------------------------------\n");
 	ft_printf("Program terminated ! Keep going, initiate !!!\n");

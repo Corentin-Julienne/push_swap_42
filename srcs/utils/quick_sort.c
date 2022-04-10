@@ -6,13 +6,13 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:51:25 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/06 18:37:38 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/08 18:22:45 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void	ft_swap(int *a, int *b)
+void	ft_swap(int *a, int *b)
 {
 	int		tmp;
 

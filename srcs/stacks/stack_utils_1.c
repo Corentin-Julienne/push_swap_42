@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 13:09:53 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/08 14:33:28 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/10 14:00:53 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,14 @@ void	stack_delone(t_stack **stack)
 {
 	if (*stack)
 	{
+		// if ((*stack)->prev)
+		// 	(*stack)->prev->next = NULL;
+		// if ((*stack)->next)
+		// 	(*stack)->next->prev = NULL;
+		// (*stack)->prev = NULL;
+		// (*stack)->next = NULL;
 		*stack = NULL;
-		free(*stack);
+		// free(*stack);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:55:29 by cjulienn          #+#    #+#             */
-/*   Updated: 2022/04/08 16:18:27 by cjulienn         ###   ########.fr       */
+/*   Updated: 2022/04/10 14:44:43 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,7 @@ int	main(int argc, char **argv)
 		free(data);
 		exit(EXIT_SUCCESS);
 	}
-	// no leaks till this
 	setup_stack_and_algo(data);
-	display_pile(data->pile_a, NULL); // verif
 	final_verifs(data); // verifs
 	suppress_leaks_bfr_exit(data);
 	return (0);
